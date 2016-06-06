@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/css" href="parlament.css"?>
+
+<b:parlament xmlns:b="http://www.ftn.uns.ac.rs/xpath/examples">
+	<b:akt>
+		<b:title>
+			akt1
+		</b:title>
+	</b:akt>
+	<b:akt>
+		<b:title>
+			akt2
+		</b:title>
+	</b:akt>
+	<b:akt>
+		<b:title>
+			akt3
+		</b:title>
+	</b:akt>
+	<b:akt>
+		<b:title>
+			akt4
+		</b:title>
+	</b:akt>
+	<b:akt>
+		<b:title>
+			akt5
+		</b:title>
+	</b:akt>
+</b:parlament>

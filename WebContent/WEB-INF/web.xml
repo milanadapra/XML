@@ -34,4 +34,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PdfGenerator</display-name>
+    <servlet-name>PdfGenerator</servlet-name>
+    <servlet-class>controller.PdfGenerator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PdfGenerator</servlet-name>
+    <url-pattern>/PdfGenerator</url-pattern>
+  </servlet-mapping>
 </web-app>

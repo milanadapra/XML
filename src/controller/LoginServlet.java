@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.user.User;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
-import model.User;
 
 /**
  * Servlet implementation class LoginServlet

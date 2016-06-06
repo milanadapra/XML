@@ -46,14 +46,20 @@
 		<br/>
 		<div class="items">
 			<c:forEach var="akt" items="${usvojeniAkti}">
-				<br/>
-				<div>
-					${akt.datum} &nbsp; <b>${akt.naziv}</b>
-					<div style="position:relative; bottom:10px; left:90%;">
-						<img src="css/images/xm.png" width="30">
-						<img src="css/images/pd.png" width="30">
+				<div class="item">
+					<div>
+					<br/>
+						&nbsp; <b>${akt.key}</b>
+					</div>
+					<div class="openPerspective">
+						<form action="PdfGenerator" method="post">
+							<input type="hidden" name="fileName" value="${akt.value}">
+							<input type="image" alt="submit" src="css/images/pd.png" width="30">
+							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
+						</form>
 					</div>
 				</div>
+				<br/>
 			</c:forEach>
 		</div>
 	</div>

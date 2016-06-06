@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:ns1="http://www.ftn.uns.ac.rs/XML">
+    <xs:import namespace="http://www.ftn.uns.ac.rs/XML" schemaLocation="akt.xsd"/>
+    <xs:element name="Amandman">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Obrazlozenje" type="xs:string"/>
+                <xs:element ref="ns1:Clan"/>
+            </xs:sequence>
+            <xs:attribute name="Datum" type="xs:date"/>
+            <xs:attribute name="BrojClana" type="xs:string" use="required"/>
+            <xs:attribute name="VrstaAmandmana">
+                <xs:simpleType>
+                    <xs:restriction base="xs:token">
+                        <xs:enumeration value="insert"/>
+                        <xs:enumeration value="update"/>
+                        <xs:enumeration value="delete"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

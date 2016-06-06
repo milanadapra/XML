@@ -31,6 +31,7 @@ body {
 }
 .content{
 	position: absolute;
+	min-height : 600px;
 	width: 80%;
 	left: 220px;
 	background-color: #EDEDED;
@@ -76,19 +77,7 @@ body {
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis; 
 }
-.item{
-    width: 400px;
-	border-style: solid;
-    border-width: 1px;
 
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-
-    border-radius: 15px;
-    border-color:#d2d2d2;
-    box-shadow:0 1px 0 #cfcfcf;
-}
 .searchBox{
 	position:absolute;
 	width: 200px;
@@ -148,4 +137,22 @@ body {
 .items{
 	position:relative;
 	top: 10%;
+}
+.item{
+    width: 70%;
+	border-style: solid;
+    border-width: 1px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+.openPerspective{
+	position:relative;
+	left: 90%;
+	bottom:5px;
 }

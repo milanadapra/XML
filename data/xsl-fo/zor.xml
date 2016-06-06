@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="akt_fo.xsl"?>
+<b:Akt xmlns:b="http://www.ftn.uns.ac.rs/XML"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o radu">
+    <b:UvodniDeo>
+        <b:Glava Naziv="Glava I">
+            <b:Odredba Naziv="Odredba 1">
+                <b:Predmet Naziv="Predmet 1">
+                    <b:Clan Naziv="Clan1">
+                        <b:Stav Naziv="Stav1">
+                            <b:Tacka Naziv="Tacka 1">
+                                <b:Sadrzaj>HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe</b:Sadrzaj>
+                            </b:Tacka>
+                            <b:Tacka Naziv="Tacka 2">
+                                <b:Sadrzaj>HehehehheheheHeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHehehehe</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                        <b:Stav Naziv="Stav2">
+                            <b:Tacka Naziv="Tacka 3">
+                                <b:Sadrzaj>Halo haloHalo haloHalo haloHalo haloHalo haloHalo haloHalo halo
+                                    Halo haloHalo haloHalo haloHalo haloHalo halo
+                                    Halo haloHalo haloHalo haloHalo haloHalo halo
+                                    Halo haloHalo haloHalo haloHalo haloHalo haloHalo haloHalo haloHalo halo</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                    </b:Clan>
+                    <b:Clan Naziv="Clan2">
+                        <b:Stav Naziv="Stav3">
+                            <b:Tacka Naziv="Tacka 4">
+                                <b:Sadrzaj>HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
+                                    HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe</b:Sadrzaj>
+                            </b:Tacka>
+                            <b:Tacka Naziv="Tacka 5">
+                                <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                
+                                HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                HehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                        <b:Stav Naziv="Stav4">
+                            <b:Tacka Naziv="Tacka 6">
+                                <b:Sadrzaj>Halo halo
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                    </b:Clan>
+                </b:Predmet>
+            </b:Odredba>
+        </b:Glava>
+    </b:UvodniDeo>
+    <b:GlavniDeo>
+        <b:Glava Naziv="Glava II">
+            <b:Odredba Naziv="Odredba 2">
+                <b:Predmet Naziv="Predmet 2">
+                    <b:Clan Naziv="Clan3">
+                        <b:Stav Naziv="Stav5">
+                            <b:Tacka Naziv="Tacka 7">
+                                <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
+                            </b:Tacka>
+                            <b:Tacka Naziv="Tacka 8">
+                                <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
+                                    HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                        <b:Stav Naziv="Stav6">
+                            <b:Tacka Naziv="Tacka 9">
+                                <b:Sadrzaj>Halo halo
+                                    HehehehheheheHehehehheheheHehehehheheheHalo haloHalo haloHalo haloHalo haloHalo halo
+                                    Halo haloHalo haloHalo haloHalo halo
+                                    Halo haloHalo haloHalo haloHalo halo</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                    </b:Clan>
+                </b:Predmet>
+            </b:Odredba>
+        </b:Glava>
+    </b:GlavniDeo>
+    <b:ZavrsniDeo>
+        <b:Glava Naziv="Glava III">
+            <b:Odredba Naziv="Odredba 3">
+                <b:Predmet Naziv="Predmet 3">
+                    <b:Clan Naziv="Clan4">
+                        <b:Stav Naziv="Stav7">
+                            <b:Tacka Naziv="Tacka 10">
+                                <b:Sadrzaj>LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM
+                                    LOREM IPSUM
+                                    LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM
+                                    LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM</b:Sadrzaj>
+                            </b:Tacka>
+                            <b:Tacka Naziv="Tacka 11">
+                                <b:Sadrzaj>HeheheheeeeeeeeeeeeeeeeeeheheheLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM LOREM IPSUM LOREM IPSUM 
+                                    LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM 
+                                    LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM 
+                                    LOREM IPSUM LOREM IPSUM LOREM IPSUM AMIN</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                        <b:Stav Naziv="Stav8">
+                            <b:Tacka Naziv="Tacka 12">
+                                <b:Tacka Naziv="Tacka 12-1">
+                                    <b:Sadrzaj>Malo miksa :D LOREM IPSUM LOREM IPSUM LOREM IPSUM  LOREM IPSUM LOREM IPSUM LOREM IPSUM 
+                                        LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM </b:Sadrzaj>
+                                </b:Tacka>
+                                <b:Sadrzaj>Halo halo pa dobro mala gde si ti</b:Sadrzaj>
+                            </b:Tacka>
+                        </b:Stav>
+                    </b:Clan>
+                </b:Predmet>
+            </b:Odredba>
+        </b:Glava>
+    </b:ZavrsniDeo>
+</b:Akt>

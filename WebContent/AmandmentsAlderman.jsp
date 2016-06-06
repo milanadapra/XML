@@ -46,15 +46,20 @@
 		<br/>
 		<div class="items">
 			<c:forEach var="amandman" items="${amandmani}">
-				<br/>
-				<div>
-					 Zahtjev za izmjenu akta <b>${amandman.akt.naziv}</b> od strane odbornika <b>${amandman.podnosilac.username}</b>
-					 <br/>
-					 <b>Izmjena:</b> ${amandman.izmjena}
-					 <br/>
-					 <b>Obrazloženje:</b>
-					 	${amandman.obrazlozenje}
+				<div class="item">
+					<div>
+					<br/>
+						&nbsp; <b>${amandman.key}</b>
+					</div>
+					<div class="openPerspective">
+						<form action="PdfGenerator" method="post">
+							<input type="hidden" name="fileName" value="${amandman.value}">
+							<input type="image" alt="submit" src="css/images/pd.png" width="30">
+							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
+						</form>
+					</div>
 				</div>
+				<br/>
 			</c:forEach>
 		</div>
 	</div>

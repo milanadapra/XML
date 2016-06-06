@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -11,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Akt;
-import model.Amandman;
-import model.User;
+import model.user.User;
 
 /**
  * Servlet implementation class StartServlet
@@ -23,9 +22,9 @@ public class StartServlet extends HttpServlet {
 	
 	private ArrayList<User> users = new ArrayList<User>();
 	
-	private ArrayList<Akt> usvojeniAkti = new ArrayList<Akt>();
-	private ArrayList<Akt> aktiUproceduri = new ArrayList<Akt>();
-	private ArrayList<Amandman> amandmani = new ArrayList<Amandman>();
+	private HashMap<String, String> usvojeniAkti = new  HashMap<String, String>();
+	private HashMap<String, String> aktiUproceduri = new  HashMap<String, String>();
+	private HashMap<String, String> amandmani = new  HashMap<String, String>();
 	
        
     /**
@@ -39,22 +38,19 @@ public class StartServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {
 		// TODO Auto-generated method stub
-		users.add(new User("devojka", "123", "Gradjanin"));
+		users.add(new User("user", "user", "Gradjanin"));
 		users.add(new User("admin", "admin", "Predsednik"));
 		users.add(new User("mico", "micic", "Odbornik"));
 		
-		usvojeniAkti.add(new Akt("Akt o preduzetnistvu","12/5/2012"));
-		usvojeniAkti.add(new Akt("Akt o radu","14/2/2008"));
-		usvojeniAkti.add(new Akt("Akt o maloletnickom prestupnistvu","31/1/2005"));
+		usvojeniAkti.put("Dusanov zakonik", "/example/akti/usvojeni/test.xml");
+		usvojeniAkti.put("Zakon o radu", "/example/akti/usvojeni/zor.xml");
+		usvojeniAkti.put("Zakon o policiji", "/example/akti/usvojeni/zop.xml");
 	
-		aktiUproceduri.add(new Akt("Akt o legalizaciji prostitucije","5/5/2016"));
-		aktiUproceduri.add(new Akt("Akt o legalizaciji marihuane","2/3/2015"));
+		aktiUproceduri.put("Zakon o legalizaciji marihuane", "/example/akti/uproceduri/zolm.xml");
 		
-		amandmani.add(new Amandman(usvojeniAkti.get(0), "Neka izmjena", "jer mi se hoce", users.get(2)));
-		amandmani.add(new Amandman(usvojeniAkti.get(2), "U zatvor poslati", "jer su djubrad", users.get(0)));
-		amandmani.add(new Amandman(aktiUproceduri.get(0), "Moraju imati ljekarsko uvjerenje", "Zdravlje na prvom mjestu", users.get(2)));
-		amandmani.add(new Amandman(aktiUproceduri.get(1), "Prodaja samo u trafikama", "Zasto bilo gdje drugo", users.get(0)));
-	}
+		amandmani.put("Prodaja marihuane samo u apotekama", "/example/amandmani/zaIzmjenu/a1.xml");
+		amandmani.put("Prodaja marihuane samo punoletnim osobama", "/example/amandmani/zaDodati/a1.xml");
+		}
 	/**
 	 * @see Servlet#init(ServletConfig)
 	 */
