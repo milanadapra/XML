@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:Akt xmlns:b="http://www.ftn.uns.ac.rs/XML"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Dušanov zakonik" Predlozio="Vuk Brankovic" Odobrio="Skupština grada Novog Sada"
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Dusanov zakonik" Predlozio="Vuk Brankovic" Odobrio="Skupština grada Novog Sada"
     DatumPredlaganja="2003-09-24" DatumUsvajanja="2003-10-24">
     <b:UvodniDeo>
         <b:Glava Naziv="Glava I">

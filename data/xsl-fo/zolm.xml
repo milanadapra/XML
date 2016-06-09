@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:Akt xmlns:b="http://www.ftn.uns.ac.rs/XML"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o legalizaciji marihuane" Predlozio="Cedomir Jovanovic" Odobrio="Skupština grada Novog Sada"
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o legalizaciji marihuane" Predlozio="Cedomir Jovanovic" 
     DatumPredlaganja="2015-09-24" DatumOdbijanja="2016-02-24">
     <b:UvodniDeo>
         <b:Glava Naziv="Glava I">

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
+import com.marklogic.client.DatabaseClient;
+
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import xmlTransformations.XMLReader;
@@ -48,11 +52,23 @@ public class PdfGenerator extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		try {
-			XMLReader xmlReader = new XMLReader();
-			String fileRoot = request.getParameter("fileRoot"); 
+			XMLReader xmlReader = new XMLReader(); 
 			String fileName = request.getParameter("fileName"); 
-			Document xmlDocument =  xmlReader.run(Util.loadProperties(), fileRoot);
+			String type = request.getParameter("type");
+			HashMap<String, Document> documentList = new HashMap<String, Document>();
 			
+			switch(type){
+				case "usvojen":{
+					documentList = (HashMap<String, Document>)getServletContext().getAttribute("usvojeniAkti");
+					break;
+					}
+				case "uProceduri": {
+					documentList = (HashMap<String, Document>)getServletContext().getAttribute("aktiUproceduri");
+					break;}
+				case "amandman": {break; }
+			}
+			
+			Document xmlDocument = documentList.get(fileName);
 			
 			try {
 				xmlDocument.insertBefore(DocumentBuilderFactory
@@ -89,5 +105,5 @@ public class PdfGenerator extends HttpServlet {
 			e.printStackTrace();
 	}
 	}
-
+	 
 }

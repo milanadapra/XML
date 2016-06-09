@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,6 +27,8 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.ProcessingInstruction;
 import org.xml.sax.SAXException;
+
+import com.marklogic.client.DatabaseClient;
 
 import xmlTransformations.XMLReader;
 import xmlTransformations.XSLFOTransformer;
@@ -58,23 +61,33 @@ public class HtmlGenerator extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String fileName = request.getParameter("fileName");
+		String type = request.getParameter("type");
+		HashMap<String, Document> documentList = new HashMap<String, Document>();
+		
+		switch(type){
+			case "usvojen":{
+				documentList = (HashMap<String, Document>)getServletContext().getAttribute("usvojeniAkti");
+				break;
+				}
+			case "uProceduri": {
+				documentList = (HashMap<String, Document>)getServletContext().getAttribute("aktiUproceduri");
+				break;}
+			case "amandman": {break; }
+		}
 		try {
-			XMLReader xmlReader = new XMLReader();
-			String fileRoot = request.getParameter("fileRoot"); 
-			Document xmlDocument =  xmlReader.run(Util.loadProperties(), fileRoot);
-			
+			Document xmlDocument = documentList.get(fileName);
 			xmlDocument.setXmlStandalone(true);
 			ProcessingInstruction pi = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/aktStyle.css\"");  
 			xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());
 			
 			OutputStream responseOutputStream = response.getOutputStream();
 
-
-ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-Source xmlSource = new DOMSource(xmlDocument);
-Result outputTarget = new StreamResult(outputStream);
-TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
-InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
+			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+			Source xmlSource = new DOMSource(xmlDocument);
+			Result outputTarget = new StreamResult(outputStream);
+			TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
+			InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
 
 			int bytes;
 			while ((bytes = is.read()) != -1) {

@@ -8,8 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.marklogic.client.DatabaseClient;
+import com.marklogic.client.DatabaseClientFactory;
+
 import model.user.User;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
+import xquery.Util;
+import xquery.Util.ConnectionProperties;
 
 /**
  * Servlet implementation class LoginServlet
@@ -46,6 +51,8 @@ public class LoginServlet extends HttpServlet {
 					user.getPassword().equals(password))
 			{
 				request.getSession().setAttribute("currentUser", user);
+				
+				
 				switch(user.getRole()){
 					case "Predsednik": {
 						response.sendRedirect("HomePagePresident.jsp");

@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +20,6 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
-import org.w3c.dom.ProcessingInstruction;
-
-import xmlTransformations.XMLReader;
-import xquery.Util;
 
 /**
  * Servlet implementation class XmlGenerator
@@ -51,9 +48,21 @@ public class XmlGenerator extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		XMLReader xmlReader = new XMLReader();
-		String fileRoot = request.getParameter("fileRoot"); 
-		Document xmlDocument =  xmlReader.run(Util.loadProperties(), fileRoot);
+		String fileName = request.getParameter("fileName");
+		String type = request.getParameter("type");
+		HashMap<String, Document> documentList = new HashMap<String, Document>();
+		
+		switch(type){
+			case "usvojen":{
+				documentList = (HashMap<String, Document>)getServletContext().getAttribute("usvojeniAkti");
+				break;
+				}
+			case "uProceduri": {
+				documentList = (HashMap<String, Document>)getServletContext().getAttribute("aktiUproceduri");
+				break;}
+			case "amandman": {break; }
+		}
+		Document xmlDocument = documentList.get(fileName);
 		
 		OutputStream responseOutputStream = response.getOutputStream();
 		

@@ -35,7 +35,7 @@
 	
 	<div class="content">
 		<div class="searchBox">
-		 <form action="" class="search-form">
+		 <form action="SearchActServlet" class="search-form">
 	       <div class="form-group has-feedback">
 	       		<label for="search" class="sr-only">Search</label>
 	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">

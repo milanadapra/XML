@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.marklogic.client.DatabaseClient;
+
 import model.user.User;
 
 /**
@@ -35,6 +37,9 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		DatabaseClient dbClient = ((DatabaseClient) request.getSession().getAttribute("client"));
+		dbClient.release();
+		
 		User currentUser = (User)request.getAttribute("currentUser");
 		currentUser = null;
 		response.sendRedirect("LoginPage.jsp");
