@@ -1,9 +1,12 @@
 package xmlTransformations;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -13,8 +16,10 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
 
 import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
@@ -52,6 +57,7 @@ public class XMLReader {
 				+ " database.");
 		
 		xmlManager.read(docId, metadata, content);
+		
 
 		Document doc = content.get();
 

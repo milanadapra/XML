@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="akt_fo.xsl"?>
 <b:Akt xmlns:b="http://www.ftn.uns.ac.rs/XML"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o radu">
+    xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o radu" Predlozio="Milos Jankovic" Odobrio="Skupština grada Novog Sada"
+    DatumUsvajanja="2003-10-24">
     <b:UvodniDeo>
         <b:Glava Naziv="Glava I">
             <b:Odredba Naziv="Odredba 1">
                 <b:Predmet Naziv="Predmet 1">
                     <b:Clan Naziv="Clan1">
-                        <b:Stav Naziv="Stav1">
-                            <b:Tacka Naziv="Tacka 1">
+                        <b:Stav Naziv="Stav 1">
+                            <b:Tacka Naziv="1">
                                 <b:Sadrzaj>HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe</b:Sadrzaj>
                             </b:Tacka>
-                            <b:Tacka Naziv="Tacka 2">
+                            <b:Tacka Naziv="2">
                                 <b:Sadrzaj>HehehehheheheHeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHehehehe</b:Sadrzaj>
                             </b:Tacka>
                         </b:Stav>
-                        <b:Stav Naziv="Stav2">
-                            <b:Tacka Naziv="Tacka 3">
+                        <b:Stav Naziv="Stav 2">
+                            <b:Tacka Naziv="3">
                                 <b:Sadrzaj>Halo haloHalo haloHalo haloHalo haloHalo haloHalo haloHalo halo
                                     Halo haloHalo haloHalo haloHalo haloHalo halo
                                     Halo haloHalo haloHalo haloHalo haloHalo halo
@@ -32,13 +32,13 @@
                         </b:Stav>
                     </b:Clan>
                     <b:Clan Naziv="Clan2">
-                        <b:Stav Naziv="Stav3">
-                            <b:Tacka Naziv="Tacka 4">
+                        <b:Stav Naziv="Stav 3">
+                            <b:Tacka Naziv="4">
                                 <b:Sadrzaj>HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe
                                     HeheheheHeheheheHeheheheHeheheheHeheheheHeheheheHehehehe</b:Sadrzaj>
                             </b:Tacka>
-                            <b:Tacka Naziv="Tacka 5">
+                            <b:Tacka Naziv="5">
                                 <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                 
@@ -46,8 +46,8 @@
                                 HehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
                             </b:Tacka>
                         </b:Stav>
-                        <b:Stav Naziv="Stav4">
-                            <b:Tacka Naziv="Tacka 6">
+                        <b:Stav Naziv="Stav 4">
+                            <b:Tacka Naziv="6">
                                 <b:Sadrzaj>Halo halo
                                     HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
@@ -63,22 +63,22 @@
             <b:Odredba Naziv="Odredba 2">
                 <b:Predmet Naziv="Predmet 2">
                     <b:Clan Naziv="Clan3">
-                        <b:Stav Naziv="Stav5">
-                            <b:Tacka Naziv="Tacka 7">
+                        <b:Stav Naziv="Stav 5">
+                            <b:Tacka Naziv="7">
                                 <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
                             </b:Tacka>
-                            <b:Tacka Naziv="Tacka 8">
+                            <b:Tacka Naziv="8">
                                 <b:Sadrzaj>HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe
                                     HehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehheheheHehehehhehehe</b:Sadrzaj>
                             </b:Tacka>
                         </b:Stav>
-                        <b:Stav Naziv="Stav6">
-                            <b:Tacka Naziv="Tacka 9">
+                        <b:Stav Naziv="Stav 6">
+                            <b:Tacka Naziv="9">
                                 <b:Sadrzaj>Halo halo
                                     HehehehheheheHehehehheheheHehehehheheheHalo haloHalo haloHalo haloHalo haloHalo halo
                                     Halo haloHalo haloHalo haloHalo halo
@@ -95,23 +95,23 @@
             <b:Odredba Naziv="Odredba 3">
                 <b:Predmet Naziv="Predmet 3">
                     <b:Clan Naziv="Clan4">
-                        <b:Stav Naziv="Stav7">
-                            <b:Tacka Naziv="Tacka 10">
+                        <b:Stav Naziv="Stav 7">
+                            <b:Tacka Naziv="10">
                                 <b:Sadrzaj>LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM
                                     LOREM IPSUM
                                     LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM
                                     LOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM</b:Sadrzaj>
                             </b:Tacka>
-                            <b:Tacka Naziv="Tacka 11">
+                            <b:Tacka Naziv="11">
                                 <b:Sadrzaj>HeheheheeeeeeeeeeeeeeeeeeheheheLOREM IPSUMLOREM IPSUMLOREM IPSUMLOREM IPSUM LOREM IPSUM LOREM IPSUM 
                                     LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM 
                                     LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM 
                                     LOREM IPSUM LOREM IPSUM LOREM IPSUM AMIN</b:Sadrzaj>
                             </b:Tacka>
                         </b:Stav>
-                        <b:Stav Naziv="Stav8">
-                            <b:Tacka Naziv="Tacka 12">
-                                <b:Tacka Naziv="Tacka 12-1">
+                        <b:Stav Naziv="Stav 8">
+                            <b:Tacka Naziv="12">
+                                <b:Tacka Naziv="12-1">
                                     <b:Sadrzaj>Malo miksa :D LOREM IPSUM LOREM IPSUM LOREM IPSUM  LOREM IPSUM LOREM IPSUM LOREM IPSUM 
                                         LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM </b:Sadrzaj>
                                 </b:Tacka>

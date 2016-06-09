@@ -145,14 +145,14 @@ body {
 
     padding-left: 20px;
     padding-right: 20px;
-    padding-bottom: 5px;
 
     border-radius: 15px;
     border-color:#d2d2d2;
     box-shadow:0 1px 0 #cfcfcf;
 }
 .openPerspective{
+	display: inline-block;
 	position:relative;
-	left: 90%;
-	bottom:5px;
+	left: 80%;
+	bottom:15px;
 }

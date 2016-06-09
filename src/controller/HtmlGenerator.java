@@ -1,10 +1,13 @@
 package controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.StringWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,24 +15,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
-import org.xml.sax.SAXException;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
+import org.w3c.dom.ProcessingInstruction;
+import org.xml.sax.SAXException;
+
 import xmlTransformations.XMLReader;
 import xmlTransformations.XSLFOTransformer;
 import xquery.Util;
 
 /**
- * Servlet implementation class PdfGenerator
+ * Servlet implementation class HtmlGenerator
  */
-public class PdfGenerator extends HttpServlet {
+public class HtmlGenerator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PdfGenerator() {
+    public HtmlGenerator() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,6 +50,7 @@ public class PdfGenerator extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -46,44 +58,31 @@ public class PdfGenerator extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		try {
 			XMLReader xmlReader = new XMLReader();
 			String fileRoot = request.getParameter("fileRoot"); 
-			String fileName = request.getParameter("fileName"); 
 			Document xmlDocument =  xmlReader.run(Util.loadProperties(), fileRoot);
 			
+			xmlDocument.setXmlStandalone(true);
+			ProcessingInstruction pi = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/aktStyle.css\"");  
+			xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());
 			
-			try {
-				xmlDocument.insertBefore(DocumentBuilderFactory
-					    .newInstance()
-					    .newDocumentBuilder()
-					    .parse(new ByteArrayInputStream("<?xml-stylesheet type=\"text/xsl\" href=\"akt_fo.xsl\"?>".getBytes()))
-					    .getDocumentElement(), xmlDocument.getFirstChild());
-			} catch (DOMException | SAXException | IOException | ParserConfigurationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			XSLFOTransformer xslFoTransformer = new XSLFOTransformer();
-			File pdfFile = xslFoTransformer.transformToPdf(xmlDocument);
-			
-			response.setContentType("application/pdf");
-			response.addHeader("Content-Disposition", "attachment; filename=" + fileName);
 			OutputStream responseOutputStream = response.getOutputStream();
-			
-			FileInputStream fileInputStream = new FileInputStream(pdfFile);
+
+
+ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+Source xmlSource = new DOMSource(xmlDocument);
+Result outputTarget = new StreamResult(outputStream);
+TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
+InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
+
 			int bytes;
-			while ((bytes = fileInputStream.read()) != -1) {
+			while ((bytes = is.read()) != -1) {
 				responseOutputStream.write(bytes);
 			}
-			fileInputStream.close();
+			is.close();
 			responseOutputStream.close(); 
 			
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

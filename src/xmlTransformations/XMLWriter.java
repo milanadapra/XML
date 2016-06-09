@@ -48,13 +48,11 @@ public class XMLWriter {
 		
 		XMLDocumentManager xmlManager = client.newXMLDocumentManager();
 		
-		String docId = "/example/akti/uproceduri/zolm.xml";
+		String docId = "/example/akti/usvojeni/aktStyle.css";
 		
-		InputStreamHandle handle = new InputStreamHandle(new FileInputStream("data/xsl-fo/zolm.xml"));
+		InputStreamHandle handle = new InputStreamHandle(new FileInputStream("data/xsl-fo/aktStyle.css"));
 		
 		xmlManager.write(docId, handle);
-		
-		//xmlManager.delete(docId);
 		
 		System.out.println("[INFO] Verify the content at: http://" + props.host + ":8000/v1/documents?database=" + props.database + "&uri=" + docId);
 		

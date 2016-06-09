@@ -55,7 +55,8 @@
 					</div>
 					<div class="openPerspective">
 						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${amandman.value}">
+							<input type="hidden" name="fileName" value="${amandman.key}">
+							<input type="hidden" name="fileRoot" value="${amandman.value}">
 							<input type="image" alt="submit" src="css/images/pd.png" width="30">
 							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
 						</form>

@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.PipedInputStream;
-import java.io.PipedOutputStream;
 import java.io.StringWriter;
 
 import javax.xml.transform.OutputKeys;
@@ -27,7 +25,6 @@ import org.apache.fop.apps.MimeConstants;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import xquery.Util;
 
 /**
  * 
@@ -78,7 +75,8 @@ public class XSLFOTransformer {
 		xslFoTransformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		xslFoTransformer.transform(source, res);
 
-		File pdfFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../gen/lastSenn.pdf"));
+		File pdfFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../gen/lastSeen.pdf"));
+		System.out.println(pdfFile.getAbsolutePath());
 		OutputStream out = new BufferedOutputStream(new FileOutputStream(pdfFile));
 		out.write(outStream.toByteArray());
 
@@ -87,5 +85,8 @@ public class XSLFOTransformer {
 
 	}
 
+	/*public static void main(String[] args) throws Exception {
 
+		new XSLFOTransformer().transformToPdf((Document)new File("data/xsl-fo/test.xml"));
+	}*/
 }

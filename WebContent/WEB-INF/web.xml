@@ -44,4 +44,24 @@
     <servlet-name>PdfGenerator</servlet-name>
     <url-pattern>/PdfGenerator</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HtmlGenerator</display-name>
+    <servlet-name>HtmlGenerator</servlet-name>
+    <servlet-class>controller.HtmlGenerator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HtmlGenerator</servlet-name>
+    <url-pattern>/HtmlGenerator</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>XmlGenerator</display-name>
+    <servlet-name>XmlGenerator</servlet-name>
+    <servlet-class>controller.XmlGenerator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>XmlGenerator</servlet-name>
+    <url-pattern>/XmlGenerator</url-pattern>
+  </servlet-mapping>
 </web-app>
