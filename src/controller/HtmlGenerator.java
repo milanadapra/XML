@@ -62,21 +62,13 @@ public class HtmlGenerator extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String fileName = request.getParameter("fileName");
-		String type = request.getParameter("type");
-		HashMap<String, Document> documentList = new HashMap<String, Document>();
+		String fileUri = request.getParameter("fileUri");
 		
-		switch(type){
-			case "usvojen":{
-				documentList = (HashMap<String, Document>)getServletContext().getAttribute("usvojeniAkti");
-				break;
-				}
-			case "uProceduri": {
-				documentList = (HashMap<String, Document>)getServletContext().getAttribute("aktiUproceduri");
-				break;}
-			case "amandman": {break; }
-		}
+		XMLReader reader = new XMLReader();
+		DatabaseClient client = (DatabaseClient) request.getSession().getAttribute("client");
+		
 		try {
-			Document xmlDocument = documentList.get(fileName);
+			Document xmlDocument = reader.run(client, fileUri);
 			xmlDocument.setXmlStandalone(true);
 			ProcessingInstruction pi = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/aktStyle.css\"");  
 			xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());

@@ -21,6 +21,10 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
+import com.marklogic.client.DatabaseClient;
+
+import xmlTransformations.XMLReader;
+
 /**
  * Servlet implementation class XmlGenerator
  */
@@ -49,20 +53,11 @@ public class XmlGenerator extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String fileName = request.getParameter("fileName");
-		String type = request.getParameter("type");
-		HashMap<String, Document> documentList = new HashMap<String, Document>();
+		String fileUri = request.getParameter("fileUri");
 		
-		switch(type){
-			case "usvojen":{
-				documentList = (HashMap<String, Document>)getServletContext().getAttribute("usvojeniAkti");
-				break;
-				}
-			case "uProceduri": {
-				documentList = (HashMap<String, Document>)getServletContext().getAttribute("aktiUproceduri");
-				break;}
-			case "amandman": {break; }
-		}
-		Document xmlDocument = documentList.get(fileName);
+		XMLReader reader = new XMLReader();
+		DatabaseClient client = (DatabaseClient) request.getSession().getAttribute("client");
+		Document xmlDocument = reader.run(client, fileUri);
 		
 		OutputStream responseOutputStream = response.getOutputStream();
 		

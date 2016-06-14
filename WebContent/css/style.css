@@ -137,6 +137,7 @@ body {
 .items{
 	position:relative;
 	top: 10%;
+	width: 80%;
 }
 .item{
     width: 70%;
