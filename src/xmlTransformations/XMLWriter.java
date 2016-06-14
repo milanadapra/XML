@@ -1,8 +1,21 @@
 package xmlTransformations;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+
+import javax.sql.rowset.spi.XmlWriter;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
@@ -16,16 +29,21 @@ import xquery.Util.ConnectionProperties;
 
 public class XMLWriter {
 
-	public static void run(DatabaseClient client, String docId) throws FileNotFoundException {
+	public void run(DatabaseClient client, String docId, Source source) throws FileNotFoundException, TransformerConfigurationException, TransformerException, TransformerFactoryConfigurationError {
 		XMLDocumentManager xmlManager = client.newXMLDocumentManager();
 		
-		//InputStreamHandle handle = new InputStreamHandle(new FileInputStream("data/xsl-fo/zop.xml"));
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		Result outputTarget = new StreamResult(outputStream);
+		TransformerFactory.newInstance().newTransformer().transform(source, outputTarget);
+		InputStream is = new ByteArrayInputStream(outputStream.toByteArray());
 		
-		//DocumentMetadataHandle metadata = new DocumentMetadataHandle();
-		//metadata.getCollections().add("akti/usvojeni");
+		InputStreamHandle handle = new InputStreamHandle(is);
+		//		InputStreamHandle handle = new InputStreamHandle(new FileInputStream("data/xsl-fo/zop.xml"));
+		DocumentMetadataHandle metadata = new DocumentMetadataHandle();
+		metadata.getCollections().add("akti/usvojeni");
 		
-		//xmlManager.write(docId, metadata, handle);
-		xmlManager.delete(docId);
+		xmlManager.write(docId, metadata, handle);
+		//xmlManager.delete(docId);
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -36,7 +54,8 @@ public class XMLWriter {
 		} else {
 			client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, props.authType);
 		}
-		run(client, "/zor.xml");
+		//XMLWriter wr = new XMLWriter();
+		//wr.run(client, "/zor.xml");
 	}
 
 }

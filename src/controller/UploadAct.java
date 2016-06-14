@@ -24,6 +24,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.xml.sax.SAXException;
 
+import com.marklogic.client.DatabaseClient;
+
+import xmlTransformations.XMLWriter;
+
 
 /**
  * Servlet implementation class UploadAct
@@ -106,6 +110,8 @@ public class UploadAct extends HttpServlet {
                     try {
                       validator.validate(xmlFile);
                       System.out.println(xmlFile.getSystemId() + " is valid");
+                      XMLWriter writer = new XMLWriter();
+                      writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile);
                     } catch (SAXException e) {
                       System.out.println(xmlFile.getSystemId() + " is NOT valid");
                       System.out.println("Reason: " + e.getLocalizedMessage());

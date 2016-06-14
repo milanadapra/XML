@@ -43,7 +43,7 @@ public class XMLCollectionReader {
 	        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() !=null	){
 	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        }
-	        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null ||
+	        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null &&
 	        		!((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals("")){
 	        	odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        }
