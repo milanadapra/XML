@@ -66,13 +66,7 @@
 									&nbsp;<input type="image" alt="submit" src="css/images/xm.png" width="30">
 									</form>
 								</td>
-								<td>
-									<form action="HtmlGenerator" method="post" >
-									<input type="hidden" name="fileName" value="${akt.key}">
-									<input type="hidden" name="type" value="usvojen">
-									&nbsp;<input type="image" alt="submit" src="css/images/ht.png" width="30">
-									</form>
-								</td>
+								
 							</tr>
 						</table>
 					</div>
