@@ -26,24 +26,33 @@ public class XMLCollectionReader {
 	private HashMap<String, String> aktiUproceduri = new HashMap<String, String>();
 	private HashMap<String, String> usvojeniAkti = new HashMap<String, String>();
 	private HashMap<String, String> amandmani = new HashMap<String, String>();
+	private HashMap<String, String> odbijeniAkti = new HashMap<String, String>();
 	
 	public void readDocuments(DatabaseClient client) throws FileNotFoundException {
 		
 		XMLReader reader = new XMLReader();
 		
 		ServerEvaluationCall call = client.newServerEval()
-			        .xquery("cts:uris()");
+			        .xquery("cts:uris()");//uris
 		for ( EvalResult result : call.eval() ) 
 		{
 	        String uri = result.getString();
-	        Document doc = (reader.run(client, uri));
-	        if(uri.contains("usvojeni"))
-	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-	        else if(uri.contains("uproceduri"))
-	        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-	        else if(uri.contains("amandmani"))
-	        	amandmani.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        
+	        Document doc = (reader.run(client, uri));
+	        if(!((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals("") &&
+	        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() !=null	){
+	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+	        }
+	        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null ||
+	        		!((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals("")){
+	        	odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+	        }
+	        else if((((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() == null ||
+	        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals(""))&&
+	        		(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() == null || 
+	        				((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals(""))){
+	        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+	        }
 	    }
 	}
 	
