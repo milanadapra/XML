@@ -75,7 +75,7 @@ public class XSLFOTransformer {
 		xslFoTransformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 		xslFoTransformer.transform(source, res);
 
-		File pdfFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../gen/lastSeen.pdf"));
+		File pdfFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../lastSeen.pdf"));
 		System.out.println(pdfFile.getAbsolutePath());
 		OutputStream out = new BufferedOutputStream(new FileOutputStream(pdfFile));
 		out.write(outStream.toByteArray());

@@ -23,9 +23,9 @@ import xquery.Util;
 import xquery.Util.ConnectionProperties;
 
 public class XMLCollectionReader {
-	private HashMap<String, Document> aktiUproceduri = new HashMap<String, Document>();
-	private HashMap<String, Document> usvojeniAkti = new HashMap<String, Document>();
-	private HashMap<String, Document> amandmani = new HashMap<String, Document>();
+	private HashMap<String, String> aktiUproceduri = new HashMap<String, String>();
+	private HashMap<String, String> usvojeniAkti = new HashMap<String, String>();
+	private HashMap<String, String> amandmani = new HashMap<String, String>();
 	
 	public void readDocuments(DatabaseClient client) throws FileNotFoundException {
 		
@@ -38,24 +38,24 @@ public class XMLCollectionReader {
 	        String uri = result.getString();
 	        Document doc = (reader.run(client, uri));
 	        if(uri.contains("usvojeni"))
-	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), doc);
+	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        else if(uri.contains("uproceduri"))
-	        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), doc);
+	        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        else if(uri.contains("amandmani"))
-	        	amandmani.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), doc);
+	        	amandmani.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
 	        
 	    }
 	}
 	
-	public HashMap<String, Document> getAktiUproceduri() {
+	public HashMap<String, String> getAktiUproceduri() {
 		return aktiUproceduri;
 	}
 
-	public HashMap<String, Document> getUsvojeniAkti() {
+	public HashMap<String, String> getUsvojeniAkti() {
 		return usvojeniAkti;
 	}
 
-	public HashMap<String, Document> getAmandmani() {
+	public HashMap<String, String> getAmandmani() {
 		return amandmani;
 	}
 
