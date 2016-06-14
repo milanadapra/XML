@@ -34,35 +34,11 @@
 	</div>
 	
 	<div class="content">
-		<div class="searchBox">
-		 <form action="" class="search-form">
-	       <div class="form-group has-feedback">
-	       		<label for="search" class="sr-only">Search</label>
-	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-	         		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	       	</div>
-	     </form>
-		</div>
-		<br/>
-		<div class="items">
-			<c:forEach var="amandman" items="${amandmani}">
-				<div class="item">
-					<div>
-					<br/>
-						&nbsp; <b>${amandman.key}</b>
-					</div>
-					<div class="openPerspective">
-						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${amandman.key}">
-							<input type="hidden" name="fileRoot" value="${amandman.value}">
-							<input type="image" alt="submit" src="css/images/pd.png" width="30">
-							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
-						</form>
-					</div>
-				</div>
-				<br/>
-			</c:forEach>
-		</div>
+		<form action="UploadAct" method="post" enctype="multipart/form-data">
+					<input type="file" name="uploadFile" size="30" />
+					<input type="submit" value="Dodaj" width="30">
+			</form>
+		
 	</div>
 </div>
 </body>

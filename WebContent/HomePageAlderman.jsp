@@ -17,8 +17,10 @@
 	<div class="col-sm-2">
 		<nav class="nav-sidebar">
 				<ul class="nav">
-                    <li><a href="HomePageCitizen.jsp">Usvojeni Akti</a></li>
-                    <li><a href="ActsInProgressCitizen.jsp">Akti u proceduri</a></li>
+                    <li><a href="HomePageAlderman.jsp">Usvojeni Akti</a></li>
+                    <li><a href="ActsInProgressAlderman.jsp">Akti u proceduri</a></li>
+                    <li><a href="AmandmentsAlderman.jsp">Amandmani</a></li>
+                    <li><a href="NewActAlderman.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                     		<form action="LogoutServlet" method="post">
@@ -79,6 +81,7 @@
 				</div>
 				<br/>
 			</c:forEach>
+			
 		</div>
 	</div>
 </div>

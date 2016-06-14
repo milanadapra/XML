@@ -20,51 +20,25 @@
                     <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
                     <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
                     <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
-                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
+                    <li><a href="NewActPresident.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
-                   	<li>
-						<a>
+                   <li><a>
                     		<form action="LogoutServlet" method="post">
                     			<button class="btn btn-primary">
                     				${currentUser.username} <input type="image" alt="submit" src="css/images/out.png" width="20">
                     			</button>
                     		</form>
-                    	</a>                  
-                     </li>
+                    	</a></li>
                 </ul>
 		</nav>
 	</div>
 	
 	<div class="content">
-		<div class="searchBox">
-		 <form action="" class="search-form">
-	       <div class="form-group has-feedback">
-	       		<label for="search" class="sr-only">Search</label>
-	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-	         		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	       	</div>
-	     </form>
-		</div>
-		<br/>
-		<div class="items">
-			<c:forEach var="akt" items="${aktiUproceduri}">
-				<div class="item">
-					<div>
-					<br/>
-						&nbsp; <b>${akt.key}</b>
-					</div>
-					<div class="openPerspective">
-						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${akt.key}">
-							<input type="hidden" name="fileRoot" value="${akt.value}">
-							<input type="image" alt="submit" src="css/images/pd.png" width="30">
-							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
-						</form>
-					</div>
-				</div>
-				<br/>
-			</c:forEach>
-		</div>
+		<form action="UploadAct" method="post" enctype="multipart/form-data">
+					<input type="file" name="uploadFile" size="30" />
+					<input type="submit" value="Dodaj" width="30">
+			</form>
+		
 	</div>
 </div>
 </body>

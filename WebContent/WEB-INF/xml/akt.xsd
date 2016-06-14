@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://www.ftn.uns.ac.rs/XML" xmlns="http://www.ftn.uns.ac.rs/XML"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.0" vc:maxVersion="1.1">
+
+    <xs:element name="Akt">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="0" name="Preambula" type="xs:string"/>
+                <xs:element name="UvodniDeo">
+                    <xs:complexType mixed="false">
+                        <xs:sequence>
+                            <xs:element ref="Glava" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="GlavniDeo">
+                    <xs:complexType mixed="false">
+                        <xs:sequence>
+                            <xs:element ref="Glava" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="ZavrsniDeo">
+                    <xs:complexType mixed="false">
+                        <xs:sequence>
+                            <xs:element ref="Glava" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element minOccurs="0" name="PrilogAkta" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="Naziv" type="xs:string" form="unqualified" use="required"/>
+            <xs:attribute default="2002-09-24" name="DatumPredlaganja" type="xs:date" use="optional"/>
+            <xs:attribute name="DatumUsvajanja" type="xs:date"/>
+            <xs:attribute name="DatumOdbijanja" type="xs:date"/>
+            <xs:attribute name="Predlozio" type="xs:string" use="required"/>
+            <xs:attribute name="Odobrio" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Odredba">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Predmet" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="Clan" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="Naziv" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Definicija" minOccurs="0" type="xs:string"/>
+                <xs:element name="ObimPrimene" minOccurs="0">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:element ref="Clan" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Naziv" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Clan">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element name="Stav" maxOccurs="unbounded">
+                    <xs:complexType mixed="true">
+                        <xs:sequence>
+                            <xs:element ref="Tacka" maxOccurs="unbounded" minOccurs="1"/>
+                        </xs:sequence>
+                        <xs:attribute name="Naziv" type="xs:string" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Naziv" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Tacka">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Tacka" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element name="Alineja" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="Naziv" type="xs:string"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Sadrzaj" type="xs:string"/>
+            </xs:sequence>
+            <xs:attribute name="Naziv" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Glava">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Odredba" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="Naziv" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
