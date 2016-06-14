@@ -66,12 +66,12 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>BrowseSearchServlet</display-name>
-    <servlet-name>BrowseSearchServlet</servlet-name>
-    <servlet-class>controller.BrowseSearchServlet</servlet-class>
+    <display-name>UploadAct</display-name>
+    <servlet-name>UploadAct</servlet-name>
+    <servlet-class>controller.UploadAct</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>BrowseSearchServlet</servlet-name>
-    <url-pattern>/BrowseSearchServlet</url-pattern>
+    <servlet-name>UploadAct</servlet-name>
+    <url-pattern>/UploadAct</url-pattern>
   </servlet-mapping>
 </web-app>
