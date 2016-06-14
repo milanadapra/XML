@@ -17,10 +17,8 @@
 	<div class="col-sm-2">
 		<nav class="nav-sidebar">
 				<ul class="nav">
-                    <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
-                    <li><a href="NewActPresident.jsp">Novi akt</a></li>
-                    <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
-                    <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
+                    <li><a href="HomePageCitizen.jsp">Usvojeni Akti</a></li>
+                    <li><a href="ActsInProgressCitizen.jsp">Akti u proceduri</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                     		<form action="LogoutServlet" method="post">
@@ -35,7 +33,7 @@
 	
 	<div class="content">
 		<div class="searchBox">
-		 <form action="SearchActServlet" class="search-form">
+		 <form action="" class="search-form">
 	       <div class="form-group has-feedback">
 	       		<label for="search" class="sr-only">Search</label>
 	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
@@ -46,18 +44,37 @@
 		<br/>
 		<div class="items">
 			<c:forEach var="akt" items="${usvojeniAkti}">
-				<div class="item">
+			<div class="item">
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
 					</div>
-					<div class="openPerspective">
-						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${akt.key}">
-							<input type="hidden" name="fileRoot" value="${akt.value}">
-							<input type="image" alt="submit" src="css/images/pd.png" width="30">
-							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
-						</form>
+					<div class="openPerspective" >
+						<table>
+							 <tr>
+								<td>
+									<form action="PdfGenerator" method="post">
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="type" value="usvojen">
+									&nbsp;<input type="image" alt="submit" src="css/images/pd.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="XmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="type" value="usvojen">
+									&nbsp;<input type="image" alt="submit" src="css/images/xm.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="HtmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="type" value="usvojen">
+									&nbsp;<input type="image" alt="submit" src="css/images/ht.png" width="30">
+									</form>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<br/>

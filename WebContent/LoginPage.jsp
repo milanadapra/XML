@@ -27,7 +27,6 @@
 				</span>
 				<br/>
 				<br/>
-				<a href="RegisterPage.jsp">Niste registrovani?</a>
 			</div>
 		</form>
 		</div>
