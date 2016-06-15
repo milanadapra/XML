@@ -18,7 +18,7 @@
 				var notValid = document.getElementsByName("notValid")[0].value;
 				var reason = document.getElementsByName("reason")[0].value;
 			    if(valid != "")
-					alert(valid + "and was insert in database.");
+					alert(valid + " and was insert in database.");
 			    else if(notValid != "")
 			    	alert(notValid + "\n" + reason);
 			}
@@ -50,6 +50,7 @@
 					<input type="hidden" name="valid" value="${valid}" size="30" />
 					<input type="hidden" name="notValid" value="${notValid}" size="30" />
 					<input type="hidden" name="reason" value="${reason}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.username}" size="30" />
 					<input type="submit" value="Dodaj" width="30">
 			</form>
 		

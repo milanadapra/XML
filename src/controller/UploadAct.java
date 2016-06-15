@@ -61,6 +61,7 @@ public class UploadAct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		  // checks if the request actually contains upload file
+		String user = request.getParameter("user");
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -128,8 +129,11 @@ public class UploadAct extends HttpServlet {
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-        getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
-    
+        if(user == "mico")
+        	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
+        else
+        	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);
+
 	}
 
 }
