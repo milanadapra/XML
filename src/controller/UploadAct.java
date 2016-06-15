@@ -130,10 +130,8 @@ public class UploadAct extends HttpServlet {
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-       
-        if(user.equals("Odbornik"))
 
-        if(user == "Odbornik")
+        if(user.equals("Odbornik"))
         	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
         else
         	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);

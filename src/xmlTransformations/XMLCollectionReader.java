@@ -39,19 +39,23 @@ public class XMLCollectionReader {
 	        String uri = result.getString();
 	        
 	        Document doc = (reader.run(client, uri));
-	        if(!((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals("") &&
-	        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() !=null	){
-	        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-	        }
-	        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null &&
-	        		!((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals("")){
-	        	odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-	        }
-	        else if((((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() == null ||
-	        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals(""))&&
-	        		(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() == null || 
-	        				((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals(""))){
-	        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+	        if(doc.getFirstChild().getNodeName().equals("b:Akt")) {
+		        if(!((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals("") &&
+		        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() !=null	){
+		        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+		        }
+		        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null &&
+		        		!((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals("")){
+		        	odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+		        }
+		        else if((((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() == null ||
+		        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals(""))&&
+		        		(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() == null || 
+		        				((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals(""))){
+		        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
+		        }
+	        } else {
+	        	amandmani.put("Amandman "+ amandmani.size() + " za akt: "+ ((Element)doc.getFirstChild()).getAttribute("Akt").toString(), uri);
 	        }
 	    }
 	}

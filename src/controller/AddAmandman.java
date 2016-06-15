@@ -37,7 +37,7 @@ public class AddAmandman extends HttpServlet {
 		String fileName = request.getParameter("fileName");
 		request.setAttribute("fileName", fileName);
 		
-		if(user.equals("mico"))
+		if(user.equals("Odbornik"))
         	getServletContext().getRequestDispatcher("/AmandmentsAlderman.jsp").forward(request, response);
         else
         	getServletContext().getRequestDispatcher("/AmandmentsPresident.jsp").forward(request, response);	

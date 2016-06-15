@@ -19,7 +19,7 @@
 				<ul class="nav">
                     <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
                     <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
-                    <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
+                    <li><a href="AmandmansInProgress.jsp">Amandmani</a></li>
                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
                    	<li>
@@ -36,35 +36,24 @@
 	</div>
 	
 	<div class="content">
-		<div class="searchBox">
-		 <form action="" class="search-form">
-	       <div class="form-group has-feedback">
-	       		<label for="search" class="sr-only">Search</label>
-	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-	         		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	       	</div>
-	     </form>
-		</div>
-		<br/>
-		<div class="items">
-			<c:forEach var="amandman" items="${amandmani}">
-				<div class="item">
-					<div>
-					<br/>
-						&nbsp; <b>${amandman.key}</b>
-					</div>
-					<div class="openPerspective">
-						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${amandman.key}">
-							<input type="hidden" name="fileRoot" value="${amandman.value}">
-							<input type="image" alt="submit" src="css/images/pd.png" width="30">
-							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
-						</form>
-					</div>
-				</div>
-				<br/>
-			</c:forEach>
-		</div>
+		
+		Dodavanje gotovog amandmana u xml formatu koji je vezan za akt <h3>${fileName}: </h3>
+		<form action="UploadAmandman" method="post" enctype="multipart/form-data" >
+					<input type="file" name="uploadFile" size="30" />
+					<input type="hidden" name="valid" value="${valid}" size="30" />
+					<input type="hidden" name="notValid" value="${notValid}" size="30" />
+					<input type="hidden" name="reason" value="${reason}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.role}" size="30" />
+					<input type="submit" value="Dodaj" width="30">
+			</form>
+				
+		 <form action="AddNewAmandman" method="post" id="xmltext">
+		 			Naziv amandmana: <input type="text" name="filename" />
+		 			<input type="hidden" name="user" value="${currentUser.role}" size="30" />
+					<input type="submit" value="Dodaj amandman" width="30">
+			</form>
+			<br/>
+			<textarea form ="xmltext" placeholder="Unesi sadrzaj amandmana..." name="tekst" id="taid" rows= "35" cols="100" wrap="soft"></textarea>
 	</div>
 </div>
 </body>

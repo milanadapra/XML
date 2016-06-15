@@ -29,7 +29,7 @@ $(document).ready(function() {
 				<ul class="nav">
                     <li><a href="HomePageAlderman.jsp">Usvojeni Akti</a></li>
                     <li><a href="ActsInProgressAlderman.jsp">Akti u proceduri</a></li>
-                    <li><a href="AmandmentsAlderman.jsp">Amandmani</a></li>
+                    <li><a href="AmandmansInProgress.jsp">Amandmani</a></li>
                     <li><a href="NewActAlderman.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
@@ -70,6 +70,11 @@ $(document).ready(function() {
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
+						<form action="AddAmandman" method="post">
+					 			<input type="hidden" name="fileName" value="${akt.key}" />
+					 			<input type="hidden" name="user" value="${currentUser.role}" size="30" />
+								<input type="submit" value="Dodaj amandman" width="30">
+					</form>
 					</div>
 					<div class="openPerspective" >
 						<table>

@@ -2,7 +2,6 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +22,9 @@ import com.marklogic.client.DatabaseClient;
 import xmlTransformations.XMLWriter;
 
 /**
- * Servlet implementation class AddNewAct
+ * Servlet implementation class AddNewAmandman
  */
-public class AddNewAct extends HttpServlet {
+public class AddNewAmandman extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private static final String UPLOAD_DIRECTORY = "upload";
@@ -33,7 +32,7 @@ public class AddNewAct extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddNewAct() {
+    public AddNewAmandman() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -51,7 +50,7 @@ public class AddNewAct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 		String fileName = request.getParameter("filename");
 		String xmlText = request.getParameter("tekst");
 		String user = request.getParameter("user");
@@ -70,7 +69,7 @@ public class AddNewAct extends HttpServlet {
 	    fw.write(xmlText);
 	    fw.close();
 	    
-	    File schemaFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../xml/akt.xsd"));
+	    File schemaFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../xml/amandman.xsd"));
         Source tempXmlFile = new StreamSource(xmlFile);
         SchemaFactory schemaFactory = SchemaFactory
             .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -113,6 +112,6 @@ public class AddNewAct extends HttpServlet {
 
 	}
 	
-	
-
 }
+
+

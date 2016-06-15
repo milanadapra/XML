@@ -27,9 +27,9 @@ import xmlTransformations.XMLWriter;
 import com.marklogic.client.DatabaseClient;
 
 /**
- * Servlet implementation class AddAmandmanToAct
+ * Servlet implementation class UploadAmandman
  */
-public class AddAmandmanToAct extends HttpServlet {
+public class UploadAmandman extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String UPLOAD_DIRECTORY = "upload";
@@ -39,7 +39,7 @@ public class AddAmandmanToAct extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddAmandmanToAct() {
+    public UploadAmandman() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -56,7 +56,7 @@ public class AddAmandmanToAct extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String user = request.getParameter("user");
+		String user = "";
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -108,6 +108,7 @@ public class AddAmandmanToAct extends HttpServlet {
                       System.out.println(xmlFile.getSystemId() + " is valid");
                       XMLWriter writer = new XMLWriter();
                       writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile);
+                      System.out.println("Upload has been done successfully!");
                       request.setAttribute("valid", fileName + " is valid");
                       request.setAttribute("notValid","");
                       request.setAttribute("reason", "");
@@ -118,14 +119,19 @@ public class AddAmandmanToAct extends HttpServlet {
                       request.setAttribute("reason", "Reason: " + e.getLocalizedMessage());
                       request.setAttribute("valid", "");
                     }
+                }      
+                else if(item.isFormField()) {
+                	user = item.getString();
+                	System.out.println(user);
                 }
             }
-            System.out.println("Upload has been done successfully!");
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-        if(user == "mico")
+        if(user.equals("Odbornik")) {
+        	System.out.println("uso");
         	getServletContext().getRequestDispatcher("/AmandmentsAlderman.jsp").forward(request, response);
+        }
         else
         	getServletContext().getRequestDispatcher("/AmandmentsPresident.jsp").forward(request, response);	
 
