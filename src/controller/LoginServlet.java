@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,7 @@ import com.marklogic.client.DatabaseClientFactory;
 
 import model.user.User;
 import sun.reflect.ReflectionFactory.GetReflectionFactoryAction;
+import xmlTransformations.XMLCollectionReader;
 import xquery.Util;
 import xquery.Util.ConnectionProperties;
 
@@ -52,6 +54,23 @@ public class LoginServlet extends HttpServlet {
 			{
 				request.getSession().setAttribute("currentUser", user);
 				
+				DatabaseClient client ;
+				ConnectionProperties props = Util.loadProperties();
+				if (props.database.equals("")) {
+					client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, props.authType);
+				} else {
+					client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, props.authType);
+				}
+				request.getSession().setAttribute("client", client);
+				
+				
+				ServletContext context = getServletContext();
+				XMLCollectionReader xmlCollection = new XMLCollectionReader();
+				xmlCollection.readDocuments(client);
+				
+				context.setAttribute("usvojeniAkti", xmlCollection.getUsvojeniAkti());
+				context.setAttribute("aktiUproceduri", xmlCollection.getAktiUproceduri());
+				context.setAttribute("amandmani", xmlCollection.getAmandmani());
 				
 				switch(user.getRole()){
 					case "Predsednik": {

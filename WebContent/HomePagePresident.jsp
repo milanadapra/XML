@@ -28,9 +28,9 @@ $(document).ready(function() {
 		<nav class="nav-sidebar">
 				<ul class="nav">
                     <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
-                    <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
                     <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
+                    <li><a href="ResultsPresident.jsp">Sjednica</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                     		<form action="LogoutServlet" method="post">
@@ -44,7 +44,7 @@ $(document).ready(function() {
 	</div>
 	
 	<div class="content">
-		<div style="position:absolute; left: 70%;">
+	<div style="position:absolute; left: 70%;">
 		<button class="pretraga btn btn-primary">Pretraga</button>
 		 <form class="pretraga" action="BrowseSearchServlet" method="post">
 	      <ul class="nav">
@@ -77,6 +77,7 @@ $(document).ready(function() {
 								<td>
 									<form action="PdfGenerator" method="post">
 									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
 									<input type="hidden" name="type" value="usvojen">
 									&nbsp;<input type="image" alt="submit" src="css/images/pd.png" width="30">
 									</form>
@@ -84,6 +85,7 @@ $(document).ready(function() {
 								<td>
 									<form action="XmlGenerator" method="post" >
 									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
 									<input type="hidden" name="type" value="usvojen">
 									&nbsp;<input type="image" alt="submit" src="css/images/xm.png" width="30">
 									</form>
@@ -91,6 +93,7 @@ $(document).ready(function() {
 								<td>
 									<form action="HtmlGenerator" method="post" >
 									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
 									<input type="hidden" name="type" value="usvojen">
 									&nbsp;<input type="image" alt="submit" src="css/images/ht.png" width="30">
 									</form>

@@ -5,22 +5,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="jquery-1.11.0.js"></script>
-<script> 
-$(document).ready(function() {
 	
-	$("form.pretraga").hide();
-	
-	$("button.pretraga").click(function(){
-        $("form.pretraga").slideToggle();
-	}); 
-});
-</script>
 <title>Grad Novi Sad</title>
 </head>
 <body style="background-image: url('css/images/noviSad.jpg');">
@@ -28,48 +17,34 @@ $(document).ready(function() {
 	<div class="col-sm-2">
 		<nav class="nav-sidebar">
 				<ul class="nav">
-                    <li><a href="HomePageCitizen.jsp">Usvojeni Akti</a></li>
+                    <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
+                    <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
+                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
+                     <li><a href="ResultsPresident.jsp">Sjednica</a></li>
                     <li class="nav-divider"></li>
-                   <li><a>
+                   	<li>
+						<a>
                     		<form action="LogoutServlet" method="post">
                     			<button class="btn btn-primary">
                     				${currentUser.username} <input type="image" alt="submit" src="css/images/out.png" width="20">
                     			</button>
                     		</form>
-                    	</a></li>
+                    	</a>                  
+                     </li>
                 </ul>
 		</nav>
 	</div>
 	
 	<div class="content">
-		<div style="position:absolute; left: 70%;">
-		<button class="pretraga btn btn-primary">Pretraga</button>
-		 <form class="pretraga" action="BrowseSearchServlet" method="post">
-	      <ul class="nav">
-		 		 	<li><a><input type="text" name="sadrzaj" placeholder="Sadrzaj"/></a></li>
-                    <li><a><input type="text" name="imeAkta" placeholder="Naziv akta"/></a></li>
-                    <li><a><input type="text" name="predlozio" placeholder="Ime predlagaca"/></a></li>
-                    <li><a>Datum predlaganja:<input type="date" name="datumPredlaganjaOd"/>
-   						<input type="date" name="datumPredlaganjaDo"/></a></li>
-   					 <li><a>Datum odbijanja:<input type="date" name="datumOdbijanjaOd"/>
-   						<input type="date" name="datumOdbijanjaDo"/></a></li>
-   					 <li><a>Datum usvajanja:<input type="date" name="datumUsvajanjaOd"/>
-   						<input type="date" name="datumUsvajanjaDo"/></a></li>
-                    <li class="nav-divider"></li>
-                   <li><a>
-                   		<input type="submit" value="Traži" class="btn btn-primary"/></a></li>
-                </ul>
-	     </form>
-		</div>
 		<br/>
 		<div class="items">
-			<c:forEach var="akt" items="${usvojeniAkti}">
-			<div class="item">
+			<c:forEach var="akt" items="${aktiUproceduri}">
+				<div class="item">
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
 					</div>
-					<div class="openPerspective" >
+					<div class="openPerspective">
 						<table>
 							 <tr>
 								<td>
@@ -94,8 +69,19 @@ $(document).ready(function() {
 									</form>
 								</td>
 							</tr>
+							<tr>
+								<td colspan="3">
+								<form action="ResultServlet" method="post">
+									<input type="hidden" name="fileUri" value="${akt.value}">
+									<input type="text" name="za" placeholder="Za" size="5"/>
+									<input type="text" name="protiv" placeholder="Protiv" size="5"/>
+									<input type="image" alt="submit" src="css/images/check.png" width="20">
+							</form>
+							</td>
+							</tr>
 						</table>
 					</div>
+					
 				</div>
 				<br/>
 			</c:forEach>

@@ -30,9 +30,9 @@
 		<nav class="nav-sidebar">
 				<ul class="nav">
                     <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
-                    <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
                     <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
+                    <li><a href="ResultsPresident.jsp">Sjednica</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                     		<form action="LogoutServlet" method="post">
@@ -46,7 +46,6 @@
 	</div>
 	
 	<div class="content">
-		Dodavanje gotovog akta u xml formatu:
 		<form action="UploadAct" method="post" enctype="multipart/form-data">
 					<input type="file" name="uploadFile" size="30" />
 					<input type="hidden" name="valid" value="${valid}" size="30" />
