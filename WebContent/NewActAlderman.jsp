@@ -31,7 +31,6 @@
 				<ul class="nav">
                     <li><a href="HomePageAlderman.jsp">Usvojeni Akti</a></li>
                     <li><a href="ActsInProgressAlderman.jsp">Akti u proceduri</a></li>
-                    <li><a href="AmandmansInProgress.jsp">Amandmani</a></li>
                     <li><a href="NewActAlderman.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
@@ -61,7 +60,7 @@
 					<input type="submit" value="Dodaj akt" width="30">
 			</form>
 			<br/>
-			<textarea form ="xmltext" placeholder="Unesi sadrzaj akta..." name="tekst" id="taid" rows= "35" cols="100" wrap="soft"></textarea>
+			<textarea form ="xmltext" placeholder="Unesi sadrzaj akta..." name="tekst" id="taid" rows= "35" cols="128" wrap="soft"></textarea>
 	</div>
 </div>
 </body>

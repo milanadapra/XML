@@ -63,7 +63,7 @@
 					<input type="submit" value="Dodaj amandman" width="30">
 			</form>
 			<br/>
-			<textarea form ="xmltext" placeholder="Unesi sadrzaj amandmana..." name="tekst" id="taid" rows= "35" cols="100" wrap="soft"></textarea>
+			<textarea form ="xmltext" placeholder="Unesi sadrzaj amandmana..." name="tekst" id="taid" rows= "35" cols="128" wrap="soft"></textarea>
 	</div>
 </div>
 </body>

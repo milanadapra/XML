@@ -19,7 +19,6 @@
 				<ul class="nav">
                     <li><a href="HomePageAlderman.jsp">Usvojeni Akti</a></li>
                     <li><a href="ActsInProgressAlderman.jsp">Akti u proceduri</a></li>
-                    <li><a href="AmandmansInProgress.jsp">Amandmani</a></li>
                     <li><a href="NewActAlderman.jsp">Novi akt</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
