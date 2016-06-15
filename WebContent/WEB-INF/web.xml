@@ -94,4 +94,24 @@
     <servlet-name>AddNewAct</servlet-name>
     <url-pattern>/AddNewAct</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>AddAmandmanToAct</display-name>
+    <servlet-name>AddAmandmanToAct</servlet-name>
+    <servlet-class>controller.AddAmandmanToAct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAmandmanToAct</servlet-name>
+    <url-pattern>/AddAmandmanToAct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddAmandman</display-name>
+    <servlet-name>AddAmandman</servlet-name>
+    <servlet-class>controller.AddAmandman</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddAmandman</servlet-name>
+    <url-pattern>/AddAmandman</url-pattern>
+  </servlet-mapping>
 </web-app>

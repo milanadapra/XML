@@ -45,6 +45,7 @@
 		</nav>
 	</div>
 	<div class="content">
+	Dodavanje gotovog akta u xml formatu:
 		<form action="UploadAct" method="post" enctype="multipart/form-data" >
 					<input type="file" name="uploadFile" size="30" />
 					<input type="hidden" name="valid" value="${valid}" size="30" />
