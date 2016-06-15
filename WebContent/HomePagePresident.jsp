@@ -9,7 +9,17 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="jquery-1.11.0.js"></script>
+<script> 
+$(document).ready(function() {
 	
+	$("form.pretraga").hide();
+	
+	$("button.pretraga").click(function(){
+        $("form.pretraga").slideToggle();
+	}); 
+});
+</script>
 <title>Grad Novi Sad</title>
 </head>
 <body style="background-image: url('css/images/noviSad.jpg');">
@@ -34,13 +44,23 @@
 	</div>
 	
 	<div class="content">
-		<div class="searchBox">
-		 <form action="" class="search-form">
-	       <div class="form-group has-feedback">
-	       		<label for="search" class="sr-only">Search</label>
-	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-	         		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	       	</div>
+		<div style="position:absolute; left: 70%;">
+		<button class="pretraga btn btn-primary">Pretraga</button>
+		 <form class="pretraga" action="BrowseSearchServlet" method="post">
+	      <ul class="nav">
+		 		 	<li><a><input type="text" name="sadrzaj" placeholder="Sadrzaj"/></a></li>
+                    <li><a><input type="text" name="imeAkta" placeholder="Naziv akta"/></a></li>
+                    <li><a><input type="text" name="predlozio" placeholder="Ime predlagaca"/></a></li>
+                    <li><a>Datum predlaganja:<input type="date" name="datumPredlaganjaOd"/>
+   						<input type="date" name="datumPredlaganjaDo"/></a></li>
+   					 <li><a>Datum odbijanja:<input type="date" name="datumOdbijanjaOd"/>
+   						<input type="date" name="datumOdbijanjaDo"/></a></li>
+   					 <li><a>Datum usvajanja:<input type="date" name="datumUsvajanjaOd"/>
+   						<input type="date" name="datumUsvajanjaDo"/></a></li>
+                    <li class="nav-divider"></li>
+                   <li><a>
+                   		<input type="submit" value="Traži" class="btn btn-primary"/></a></li>
+                </ul>
 	     </form>
 		</div>
 		<br/>

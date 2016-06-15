@@ -24,6 +24,10 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.xml.sax.SAXException;
 
+import com.marklogic.client.DatabaseClient;
+
+import xmlTransformations.XMLWriter;
+
 
 /**
  * Servlet implementation class UploadAct
@@ -57,6 +61,7 @@ public class UploadAct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		  // checks if the request actually contains upload file
+		String user = request.getParameter("user");
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -106,24 +111,29 @@ public class UploadAct extends HttpServlet {
                     try {
                       validator.validate(xmlFile);
                       System.out.println(xmlFile.getSystemId() + " is valid");
-                      String message = "Dokument je validan!";
-                      request.setAttribute("message", message);
+                      XMLWriter writer = new XMLWriter();
+                      writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile);
+                      request.setAttribute("valid", fileName + " is valid");
+                      request.setAttribute("notValid","");
+                      request.setAttribute("reason", "");
                     } catch (SAXException e) {
                       System.out.println(xmlFile.getSystemId() + " is NOT valid");
                       System.out.println("Reason: " + e.getLocalizedMessage());
-                      String message = "Dokument nije validan! Razlog : " + e.getLocalizedMessage();
-                      request.setAttribute("message", message);
+                      request.setAttribute("notValid",fileName + " is NOT valid");
+                      request.setAttribute("reason", "Reason: " + e.getLocalizedMessage());
+                      request.setAttribute("valid", "");
                     }
-              
-                    
                 }
             }
             System.out.println("Upload has been done successfully!");
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-        getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
-    
+        if(user == "mico")
+        	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
+        else
+        	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);
+
 	}
 
 }

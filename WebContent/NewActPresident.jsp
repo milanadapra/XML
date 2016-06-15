@@ -11,8 +11,20 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
 <title>Grad Novi Sad</title>
+<script type="text/javascript">
+			function proveriValidnost()
+			{
+				var valid = document.getElementsByName("valid")[0].value;
+				var notValid = document.getElementsByName("notValid")[0].value;
+				var reason = document.getElementsByName("reason")[0].value;
+			    if(valid != "")
+					alert(valid + " and was insert in database.");
+			    else if(notValid != "")
+			    	alert(notValid + "\n" + reason);
+			}
+</script>
 </head>
-<body style="background-image: url('css/images/noviSad.jpg');">
+<body style="background-image: url('css/images/noviSad.jpg');" onload="proveriValidnost()">
 <div class="container">
 	<div class="col-sm-2">
 		<nav class="nav-sidebar">
@@ -36,6 +48,10 @@
 	<div class="content">
 		<form action="UploadAct" method="post" enctype="multipart/form-data">
 					<input type="file" name="uploadFile" size="30" />
+					<input type="hidden" name="valid" value="${valid}" size="30" />
+					<input type="hidden" name="notValid" value="${notValid}" size="30" />
+					<input type="hidden" name="reason" value="${reason}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.username}" size="30" />
 					<input type="submit" value="Dodaj" width="30">
 			</form>
 		
