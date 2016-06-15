@@ -43,6 +43,7 @@ public class StartServlet extends HttpServlet {
 		users.add(new User("user", "user", "Gradjanin"));
 		users.add(new User("admin", "admin", "Predsednik"));
 		users.add(new User("mico", "micic", "Odbornik"));
+		getServletContext().setAttribute("users", users);
 	}
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
@@ -52,24 +53,6 @@ public class StartServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DatabaseClient client ;
-		ConnectionProperties props = Util.loadProperties();
-		if (props.database.equals("")) {
-			client = DatabaseClientFactory.newClient(props.host, props.port, props.user, props.password, props.authType);
-		} else {
-			client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, props.authType);
-		}
-		request.getSession().setAttribute("client", client);
-		
-		
-		ServletContext context = getServletContext();
-		XMLCollectionReader xmlCollection = new XMLCollectionReader();
-		xmlCollection.readDocuments(client);
-		
-		context.setAttribute("users", users);
-		context.setAttribute("usvojeniAkti", xmlCollection.getUsvojeniAkti());
-		context.setAttribute("aktiUproceduri", xmlCollection.getAktiUproceduri());
-		context.setAttribute("amandmani", xmlCollection.getAmandmani());
 		
 		response.sendRedirect("LoginPage.jsp");
 	}
