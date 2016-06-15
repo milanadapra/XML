@@ -55,7 +55,7 @@ public class XMLWriter {
 			client = DatabaseClientFactory.newClient(props.host, props.port, props.database, props.user, props.password, props.authType);
 		}
 		//XMLWriter wr = new XMLWriter();
-		//wr.run(client, "/zor.xml");
+		//wr.run(client, "/zolm.xml");
 	}
 
 }

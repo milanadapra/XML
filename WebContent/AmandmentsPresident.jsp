@@ -17,9 +17,9 @@
 	<div class="col-sm-2">
 		<nav class="nav-sidebar">
 				<ul class="nav">
-                   <li><a href="HomePageAlderman.jsp">Usvojeni Akti</a></li>
-                    <li><a href="ActsInProgressAlderman.jsp">Akti u proceduri</a></li>
-                    <li><a href="NewActAlderman.jsp">Novi akt</a></li>
+                  <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
+                    <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
+                    <li><a href="NewActPresident.jsp">Novi akt</a></li>
                       <li><a href="ResultsPresident.jsp">Sjednica</a></li>
                     <li class="nav-divider"></li>
                    	<li>
