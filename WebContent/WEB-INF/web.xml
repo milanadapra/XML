@@ -56,6 +56,16 @@
   </servlet-mapping>
   <servlet>
     <description></description>
+    <display-name>BrowseSearchServlet</display-name>
+    <servlet-name>BrowseSearchServlet</servlet-name>
+    <servlet-class>controller.BrowseSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BrowseSearchServlet</servlet-name>
+    <url-pattern>/BrowseSearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
     <display-name>XmlGenerator</display-name>
     <servlet-name>XmlGenerator</servlet-name>
     <servlet-class>controller.XmlGenerator</servlet-class>
