@@ -50,6 +50,11 @@
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
+					<form action="AddAmandman" method="post">
+						<input type="hidden" name="fileName" value="${akt.key}">
+						<input type="hidden" name="user" value="${currentUser.username}">
+						<input type="submit" value="Dodaj Amandman" width="30">
+					</form>
 					</div>
 					<div class="openPerspective" >
 						<table>

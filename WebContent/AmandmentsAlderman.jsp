@@ -63,6 +63,15 @@
 				<br/>
 			</c:forEach>
 		</div>
+		Dodavanje gotovog amandmana u xml formatu koji je vezan za akt <h3>${fileName}: </h3>
+		<form action="AddAmandmanToAct" method="post" enctype="multipart/form-data" >
+					<input type="file" name="uploadFile" size="30" />
+					<input type="hidden" name="valid" value="${valid}" size="30" />
+					<input type="hidden" name="notValid" value="${notValid}" size="30" />
+					<input type="hidden" name="reason" value="${reason}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.username}" size="30" />
+					<input type="submit" value="Dodaj" width="30">
+			</form>
 	</div>
 </div>
 </body>
