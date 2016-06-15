@@ -74,4 +74,14 @@
     <servlet-name>UploadAct</servlet-name>
     <url-pattern>/UploadAct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddNewAct</display-name>
+    <servlet-name>AddNewAct</servlet-name>
+    <servlet-class>controller.AddNewAct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddNewAct</servlet-name>
+    <url-pattern>/AddNewAct</url-pattern>
+  </servlet-mapping>
 </web-app>

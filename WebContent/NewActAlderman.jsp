@@ -38,7 +38,15 @@
 					<input type="file" name="uploadFile" size="30" />
 					<input type="submit" value="Dodaj" width="30">
 			</form>
-		
+			
+		 <h3>${message}</h3>
+		 
+		 <form action="AddNewAct" method="post" id="xmltext">
+		 			Naziv akta: <input type="text" name="filename" />
+					<input type="submit" value="Dodaj akt" width="30">
+			</form>
+			<br/>
+			<textarea form ="xmltext" name="tekst" id="taid" rows= "35" cols="100" wrap="soft">Uneti sadrzaj akta...</textarea>
 	</div>
 </div>
 </body>
