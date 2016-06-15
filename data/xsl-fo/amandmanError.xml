@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Amandman xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   BrojClana="Clan 3" VrstaAmandmana="insert" Akt="">
+    
+    <Clan xmlns="http://www.ftn.uns.ac.rs/XML" Naziv="Clan11">
+        <Stav Naziv="Stavka">
+            <Tacka Naziv="Tacka">
+                <Sadrzaj>SSSSSs</Sadrzaj>
+            </Tacka>
+        </Stav>
+    </Clan>
+    <Clan xmlns="http://www.ftn.uns.ac.rs/XML" Naziv="Clan12">
+        <Stav Naziv="Stavka2">
+            <Tacka Naziv="Tacka2">
+                <Sadrzaj>SSSSSs2</Sadrzaj>
+            </Tacka>
+        </Stav>
+    </Clan>
+</Amandman>

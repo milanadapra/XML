@@ -5,12 +5,12 @@
     <xs:element name="Amandman">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="Obrazlozenje" type="xs:string"/>
-                <xs:element ref="ns1:Clan"/>
+                <xs:element name="Obrazlozenje" type="xs:string" minOccurs="0"/>
+                <xs:element ref="ns1:Clan" minOccurs="0"/>
             </xs:sequence>
-            <xs:attribute name="Datum" type="xs:date"/>
+            <xs:attribute name="Datum" type="xs:date" default="2012-12-12" use="optional"/>
             <xs:attribute name="BrojClana" type="xs:string" use="required"/>
-            <xs:attribute name="VrstaAmandmana">
+            <xs:attribute name="VrstaAmandmana" use="required">
                 <xs:simpleType>
                     <xs:restriction base="xs:token">
                         <xs:enumeration value="insert"/>
@@ -19,6 +19,7 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:attribute>
+            <xs:attribute name="Akt" type="xs:string" use="required"/>
         </xs:complexType>
     </xs:element>
 </xs:schema>
