@@ -17,22 +17,19 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
-
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.xml.sax.SAXException;
 
-import com.marklogic.client.DatabaseClient;
-
 import xmlTransformations.XMLWriter;
 
+import com.marklogic.client.DatabaseClient;
 
 /**
- * Servlet implementation class UploadAct
+ * Servlet implementation class AddAmandmanToAct
  */
-public class UploadAct extends HttpServlet {
+public class AddAmandmanToAct extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String UPLOAD_DIRECTORY = "upload";
@@ -42,7 +39,7 @@ public class UploadAct extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadAct() {
+    public AddAmandmanToAct() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,11 +54,9 @@ public class UploadAct extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("deprecation")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		  // checks if the request actually contains upload file
-		String user = "";
+		String user = request.getParameter("user");
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -102,7 +97,7 @@ public class UploadAct extends HttpServlet {
                     // saves the file on disk
                     item.write(storeFile);
                     
-                    File schemaFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../xml/akt.xsd"));
+                    File schemaFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../xml/amandman.xsd"));
                     Source xmlFile = new StreamSource(storeFile);
                     SchemaFactory schemaFactory = SchemaFactory
                         .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
@@ -124,20 +119,15 @@ public class UploadAct extends HttpServlet {
                       request.setAttribute("valid", "");
                     }
                 }
-                else if(item.isFormField()) {
-                	user = item.getString();
-                }
             }
             System.out.println("Upload has been done successfully!");
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-       
-        if(user.equals("Odbornik"))
-        	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
+        if(user == "mico")
+        	getServletContext().getRequestDispatcher("/AmandmentsAlderman.jsp").forward(request, response);
         else
-        	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);
+        	getServletContext().getRequestDispatcher("/AmandmentsPresident.jsp").forward(request, response);	
 
 	}
-
 }

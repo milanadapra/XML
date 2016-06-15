@@ -51,7 +51,7 @@
 					<input type="hidden" name="valid" value="${valid}" size="30" />
 					<input type="hidden" name="notValid" value="${notValid}" size="30" />
 					<input type="hidden" name="reason" value="${reason}" size="30" />
-					<input type="hidden" name="user" value="${currentUser.username}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.role}" size="30" />
 					<input type="submit" value="Dodaj" width="30">
 			</form>
 			
