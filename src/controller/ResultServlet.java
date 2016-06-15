@@ -1,26 +1,24 @@
 package controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.marklogic.client.DatabaseClient;
-
-import model.user.User;
+import com.marklogic.client.eval.ServerEvaluationCall;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class ResultServlet
  */
-public class LogoutServlet extends HttpServlet {
+public class ResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public ResultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,6 +28,7 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -37,12 +36,22 @@ public class LogoutServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		DatabaseClient dbClient = ((DatabaseClient) request.getSession().getAttribute("client"));
-		//dbClient.release();
+		Integer za = Integer.parseInt(request.getParameter("za"));
+		Integer protiv = Integer.parseInt(request.getParameter("protiv"));
+		String file = request.getParameter("fileUri");
 		
-		User currentUser = (User)request.getAttribute("currentUser");
-		currentUser = null;
-		response.sendRedirect("LoginPage.jsp");
+		DatabaseClient client = (DatabaseClient)request.getSession().getAttribute("client");
+		
+		if(za > protiv) {
+			ServerEvaluationCall call = client.newServerEval()
+					.xquery("xdmp:document-set-collections(\""+ file +"\",\"akti/usvojeni\")");
+			call.eval();
+		}
+		else {
+			ServerEvaluationCall call = client.newServerEval()
+			.xquery("xdmp:document-set-collections(\""+ file +"\",\"akti/odbijeni\")");
+			call.eval();	
+	}
 	}
 
 }

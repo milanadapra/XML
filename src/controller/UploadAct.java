@@ -17,8 +17,6 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
-
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -134,6 +132,8 @@ public class UploadAct extends HttpServlet {
         }
        
         if(user.equals("Odbornik"))
+
+        if(user == "Odbornik")
         	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
         else
         	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);

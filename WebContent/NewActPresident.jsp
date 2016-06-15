@@ -30,9 +30,9 @@
 		<nav class="nav-sidebar">
 				<ul class="nav">
                     <li><a href="HomePagePresident.jsp">Usvojeni Akti</a></li>
-                    <li><a href="ActsInProgressPresident.jsp">Akti u proceduri</a></li>
                     <li><a href="AmandmentsPresident.jsp">Amandmani</a></li>
                     <li><a href="NewActPresident.jsp">Novi akt</a></li>
+                    <li><a href="ResultsPresident.jsp">Sjednica</a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                     		<form action="LogoutServlet" method="post">
@@ -46,16 +46,23 @@
 	</div>
 	
 	<div class="content">
-		Dodavanje gotovog akta u xml formatu:
 		<form action="UploadAct" method="post" enctype="multipart/form-data">
 					<input type="file" name="uploadFile" size="30" />
 					<input type="hidden" name="valid" value="${valid}" size="30" />
 					<input type="hidden" name="notValid" value="${notValid}" size="30" />
 					<input type="hidden" name="reason" value="${reason}" size="30" />
-					<input type="hidden" name="user" value="${currentUser.username}" size="30" />
+					<input type="hidden" name="user" value="${currentUser.role}" size="30" />
 					<input type="submit" value="Dodaj" width="30">
 			</form>
 		
+		<form action="AddNewAct" method="post" id="xmltext">
+		 			Naziv akta: <input type="text" name="filename" />
+		 			<input type="hidden" name="user" value="${currentUser.role}" size="30" />
+					<input type="submit" value="Dodaj akt" width="30">
+			</form>
+			<br/>
+			<textarea form ="xmltext" placeholder="Unesi sadrzaj akta..." name="tekst" id="taid" rows= "35" cols="100" wrap="soft"></textarea>
+	
 	</div>
 </div>
 </body>
