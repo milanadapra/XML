@@ -10,7 +10,17 @@
 
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="jquery-1.11.0.js"></script>
+<script> 
+$(document).ready(function() {
 	
+	$("form.pretraga").hide();
+	
+	$("button.pretraga").click(function(){
+        $("form.pretraga").slideToggle();
+	}); 
+});
+</script>
 <title>Grad Novi Sad</title>
 </head>
 <body style="background-image: url('css/images/noviSad.jpg');">
@@ -33,9 +43,10 @@
 	</div>
 	
 	<div class="content">
-		<div style="position:absolute; left: 75%;">
-		 <form action="BrowseSearchServlet" method="post">
-		 		<ul class="nav">
+		<div style="position:absolute; left: 70%;">
+		<button class="pretraga btn btn-primary">Pretraga</button>
+		 <form class="pretraga" action="BrowseSearchServlet" method="post">
+	      <ul class="nav">
 		 		 	<li><a><input type="text" name="sadrzaj" placeholder="Sadrzaj"/></a></li>
                     <li><a><input type="text" name="imeAkta" placeholder="Naziv akta"/></a></li>
                     <li><a><input type="text" name="predlozio" placeholder="Ime predlagaca"/></a></li>
@@ -47,7 +58,7 @@
    						<input type="date" name="datumUsvajanjaDo"/></a></li>
                     <li class="nav-divider"></li>
                    <li><a>
-                   		<input type="submit" value="Pretraga" class="btn btn-primary"/></a></li>
+                   		<input type="submit" value="Traži" class="btn btn-primary"/></a></li>
                 </ul>
 	     </form>
 		</div>
