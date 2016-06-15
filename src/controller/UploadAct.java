@@ -17,8 +17,6 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
-
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -61,7 +59,10 @@ public class UploadAct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		  // checks if the request actually contains upload file
+		
 		String user = request.getParameter("user");
+		System.out.println(user);
+		
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -129,7 +130,8 @@ public class UploadAct extends HttpServlet {
         } catch (Exception ex) {
             System.out.println("There was an error: " + ex.getMessage());
         }
-        if(user.equals("mico"))
+
+        if(user == "Odbornik")
         	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
         else
         	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);

@@ -2,18 +2,25 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
 
 import org.xml.sax.SAXException;
+
+import com.marklogic.client.DatabaseClient;
+
+import xmlTransformations.XMLWriter;
 
 /**
  * Servlet implementation class AddNewAct
@@ -47,6 +54,9 @@ public class AddNewAct extends HttpServlet {
 		
 		String fileName = request.getParameter("filename");
 		String xmlText = request.getParameter("tekst");
+		String user = request.getParameter("user");
+		
+		System.out.println(user);
 		
 		// constructs the directory path to store upload file
         String uploadPath = getServletContext().getRealPath("")
@@ -74,19 +84,35 @@ public class AddNewAct extends HttpServlet {
 			e1.printStackTrace();
 		}
         Validator validator = schema.newValidator();
+        XMLWriter writer = new XMLWriter();
+        
         try {
           validator.validate(tempXmlFile);
+          
+          try {
+			writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName + ".xml", tempXmlFile);
+		} catch (TransformerException | TransformerFactoryConfigurationError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
           System.out.println(tempXmlFile.getSystemId() + " is valid");
-          String message = "Dokument je validan!";
-          request.setAttribute("message", message);
+          request.setAttribute("valid", fileName + " is valid");
+          request.setAttribute("notValid","");
+          request.setAttribute("reason", "");
         } catch (SAXException e) {
           System.out.println(tempXmlFile.getSystemId() + " is NOT valid");
           System.out.println("Reason: " + e.getLocalizedMessage());
-          String message = "Dokument nije validan! Razlog : " + e.getLocalizedMessage();
-          request.setAttribute("message", message);
+          request.setAttribute("notValid",fileName + " is NOT valid");
+          request.setAttribute("reason", "Reason: " + e.getLocalizedMessage());
+          request.setAttribute("valid", "");
         }
 	    
-        getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
+        if(user.equals("Odbornik")) {
+        	getServletContext().getRequestDispatcher("/NewActAlderman.jsp").forward(request, response);
+        }
+        else
+        	getServletContext().getRequestDispatcher("/NewActPresident.jsp").forward(request, response);
+
 	}
 	
 	
