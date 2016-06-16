@@ -64,13 +64,8 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("client", client);
 				
 				
-				ServletContext context = getServletContext();
-				XMLCollectionReader xmlCollection = new XMLCollectionReader();
-				xmlCollection.readDocuments(client);
-				
-				context.setAttribute("usvojeniAkti", xmlCollection.getUsvojeniAkti());
-				context.setAttribute("aktiUproceduri", xmlCollection.getAktiUproceduri());
-				context.setAttribute("amandmani", xmlCollection.getAmandmani());
+				ReloadContext rC = new ReloadContext();
+				rC.reload(getServletContext(), client);
 				
 				switch(user.getRole()){
 					case "Predsednik": {

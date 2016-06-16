@@ -41,9 +41,11 @@ public class ResultServlet extends HttpServlet {
 		}
 		else {
 			ServerEvaluationCall call = client.newServerEval()
-			.xquery("xdmp:document-set-collections(\""+ file +"\",\"amandmani/uproceduri\")");
+			.xquery("xdmp:document-delete(\""+file+"\")");
 			call.eval();	
 		}
+		ReloadContext rC = new ReloadContext();
+		rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
 		response.sendRedirect("ResultsPresident.jsp");
 	}
 
@@ -65,9 +67,11 @@ public class ResultServlet extends HttpServlet {
 		}
 		else {
 			ServerEvaluationCall call = client.newServerEval()
-			.xquery("xdmp:document-set-collections(\""+ file +"\",\"akti/odbijeni\")");
+					.xquery("xdmp:document-delete(\""+file+"\")");
 			call.eval();	
 		}
+		ReloadContext rC = new ReloadContext();
+		rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
 		response.sendRedirect("ResultsPresident.jsp");
 	}
 
