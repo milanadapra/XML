@@ -71,8 +71,12 @@ public class HtmlGenerator extends HttpServlet {
 			Document xmlDocument = reader.run(client, fileUri);
 			xmlDocument.setXmlStandalone(true);
 			ProcessingInstruction pi = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/aktStyle.css\"");  
-			xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());
+			ProcessingInstruction piAmandman = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/amandmanStyle.css\"");  
 			
+			if(xmlDocument.getFirstChild().getNodeName().equals("Akt"))
+				xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());
+			else
+				xmlDocument.insertBefore(piAmandman, xmlDocument.getFirstChild());
 			OutputStream responseOutputStream = response.getOutputStream();
 
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

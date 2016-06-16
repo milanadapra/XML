@@ -1,0 +1,74 @@
+Amandman{
+    margin: auto;
+    padding: 50px;
+	background: url('http://orig00.deviantart.net/1ac2/f/2014/117/e/0/novi_sad_wallpaper_by_balkanicon-d7g5k1i.jpg');
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size: 100% auto; 
+}
+Amandman:before{
+	content: "Zahtjev za izmjenu clana " attr(BrojClana) " iz zakona " attr(Akt) ;
+	text-align: center;
+    font-family:sans-serif;
+    font-size: 32px;
+    font-weight: bold; 
+	padding: 50px;
+	color: #EDEDED;
+}
+Clan{
+	display: block;
+	padding: 50px;
+	background-color: #EDEDED;
+	padding-right: 20px;
+	opacity: 0.9;
+	filter: alpha(opacity=80);
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px; 
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+}
+Obrazlozenje{
+	display: block;
+	padding: 50px;
+	background-color: #EDEDED;
+	padding-right: 20px;
+	opacity: 0.9;
+	filter: alpha(opacity=80);
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px; 
+	border-top-left-radius:15px;
+	border-top-right-radius:15px;
+}
+
+Clan Stav:before{
+	display: block;
+	content: attr(Naziv);
+	font-size: 17px;
+	text-align: center;
+	font-weight: bold; 
+	
+}
+Stav Tacka:before{
+	display: block;
+	content: attr(Naziv) ")";
+	font-size: 17px;
+	text-align: left;
+	font-weight: bold; 
+}
+Tacka Tacka:before{
+	display: block;
+	content: attr(Naziv) ")";
+	font-size: 16px;
+	font-weight: bold; 
+}
+
+Tacka Sadrzaj{
+	display: block;
+	font-size: 14px;
+}
+Tacka Alineja:before{
+	display: block;
+	content: attr(Naziv);
+	font-size: 16px;
+	font-weight: bold; 
+}
