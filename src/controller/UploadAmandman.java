@@ -107,7 +107,7 @@ public class UploadAmandman extends HttpServlet {
                       validator.validate(xmlFile);
                       System.out.println(xmlFile.getSystemId() + " is valid");
                       XMLWriter writer = new XMLWriter();
-                      writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile);
+                      writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile, "amandmani/uproceduri");
                       System.out.println("Upload has been done successfully!");
                       request.setAttribute("valid", fileName + " is valid");
                       request.setAttribute("notValid","");

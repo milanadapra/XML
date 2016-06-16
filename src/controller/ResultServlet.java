@@ -28,7 +28,23 @@ public class ResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Integer za = Integer.parseInt(request.getParameter("za"));
+		Integer protiv = Integer.parseInt(request.getParameter("protiv"));
+		String file = request.getParameter("fileUri");
+		
+		DatabaseClient client = (DatabaseClient)request.getSession().getAttribute("client");
+		
+		if(za > protiv) {
+			ServerEvaluationCall call = client.newServerEval()
+					.xquery("xdmp:document-set-collections(\""+ file +"\",\"amandmani/usvojeni\")");
+			call.eval();
+		}
+		else {
+			ServerEvaluationCall call = client.newServerEval()
+			.xquery("xdmp:document-set-collections(\""+ file +"\",\"amandmani/uproceduri\")");
+			call.eval();	
+		}
+		response.sendRedirect("ResultsPresident.jsp");
 	}
 
 	/**
@@ -51,7 +67,8 @@ public class ResultServlet extends HttpServlet {
 			ServerEvaluationCall call = client.newServerEval()
 			.xquery("xdmp:document-set-collections(\""+ file +"\",\"akti/odbijeni\")");
 			call.eval();	
-	}
+		}
+		response.sendRedirect("ResultsPresident.jsp");
 	}
 
 }

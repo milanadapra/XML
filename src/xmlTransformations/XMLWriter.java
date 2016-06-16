@@ -29,7 +29,7 @@ import xquery.Util.ConnectionProperties;
 
 public class XMLWriter {
 
-	public void run(DatabaseClient client, String docId, Source source) throws FileNotFoundException, TransformerConfigurationException, TransformerException, TransformerFactoryConfigurationError {
+	public void run(DatabaseClient client, String docId, Source source, String collection) throws FileNotFoundException, TransformerConfigurationException, TransformerException, TransformerFactoryConfigurationError {
 		XMLDocumentManager xmlManager = client.newXMLDocumentManager();
 		
 		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -40,7 +40,7 @@ public class XMLWriter {
 		InputStreamHandle handle = new InputStreamHandle(is);
 		//		InputStreamHandle handle = new InputStreamHandle(new FileInputStream("data/xsl-fo/zop.xml"));
 		DocumentMetadataHandle metadata = new DocumentMetadataHandle();
-		metadata.getCollections().add("akti/usvojeni");
+		metadata.getCollections().add(collection);//"amandmani/uproceduri"
 		
 		xmlManager.write(docId, metadata, handle);
 		//xmlManager.delete(docId);

@@ -32,7 +32,7 @@
             </xs:sequence>
             <xs:attribute name="Naziv" type="xs:string" form="unqualified" use="required"/>
             <xs:attribute default="2002-09-24" name="DatumPredlaganja" type="xs:date" use="optional"/>
-            <xs:attribute name="DatumUsvajanja" type="xs:date"/>
+            <xs:attribute name="DatumUsvajanja" type="xs:date" use="optional"/>
             <xs:attribute name="DatumOdbijanja" type="xs:date"/>
             <xs:attribute name="Predlozio" type="xs:string" use="required"/>
             <xs:attribute name="Odobrio" type="xs:string" use="required"/>

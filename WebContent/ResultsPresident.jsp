@@ -37,9 +37,12 @@
 	
 	<div class="content">
 		<br/>
-		<div class="items">
+		<div class="items" style="width: 90%;">
+			<table width="950">
+				<tr>
+					<td>
 			<c:forEach var="akt" items="${aktiUproceduri}">
-				<div class="item">
+				<div class="item" style="width: 100%;">
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
@@ -85,6 +88,57 @@
 				</div>
 				<br/>
 			</c:forEach>
+			</td>
+			<td style="padding-left:20px;">
+			<c:forEach var="amandman" items="${amandmani}">
+				<div class="item"  style="width: 90%;">
+					<div>
+					<br/>
+						&nbsp; <b>${amandman.key}</b>
+					</div>
+					<div class="openPerspective" style="left: 60%;">
+						<table>
+							 <tr>
+								<td>
+									<form action="PdfGenerator" method="post">
+									<input type="hidden" name="fileName" value="${amandman.key}">
+									<input type="hidden" name="fileUri" value="${amandman.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/pd.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="XmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${amandman.key}">
+									<input type="hidden" name="fileUri" value="${amandman.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/xm.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="HtmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${amandman.key}">
+									<input type="hidden" name="fileUri" value="${amandman.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/ht.png" width="30">
+									</form>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+								<form action="ResultServlet">
+									<input type="hidden" name="fileUri" value="${amandman.value}">
+									<input type="text" name="za" placeholder="Za" size="5"/>
+									<input type="text" name="protiv" placeholder="Protiv" size="5"/>
+									<input type="image" alt="submit" src="css/images/check.png" width="20">
+							</form>
+							</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<br/>
+			</c:forEach>
+			</td>
+			</tr>
+			</table>
 		</div>
 	</div>
 </div>

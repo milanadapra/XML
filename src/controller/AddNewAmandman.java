@@ -87,7 +87,7 @@ public class AddNewAmandman extends HttpServlet {
           validator.validate(tempXmlFile);
           
           try {
-			writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName + ".xml", tempXmlFile);
+			writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName + ".xml", tempXmlFile, "amandmani/uproceduri");
 		} catch (TransformerException | TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

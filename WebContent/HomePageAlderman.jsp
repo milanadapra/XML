@@ -66,14 +66,10 @@ $(document).ready(function() {
 		<div class="items">
 			<c:forEach var="akt" items="${usvojeniAkti}">
 			<div class="item">
+					
 					<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
-						<form action="AddAmandman" method="post">
-					 			<input type="hidden" name="fileName" value="${akt.key}" />
-					 			<input type="hidden" name="user" value="${currentUser.role}" size="30" />
-								<input type="submit" value="Dodaj amandman" width="30">
-					</form>
 					</div>
 					<div class="openPerspective" >
 						<table>

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.user.User;
+
 /**
  * Servlet implementation class AddAmandman
  */
@@ -33,11 +35,11 @@ public class AddAmandman extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String user = request.getParameter("user");
+		User user = (User)request.getSession().getAttribute("currentUser");
 		String fileName = request.getParameter("fileName");
 		request.setAttribute("fileName", fileName);
 		
-		if(user.equals("Odbornik"))
+		if(user.getRole().equals("Odbornik"))
         	getServletContext().getRequestDispatcher("/AmandmentsAlderman.jsp").forward(request, response);
         else
         	getServletContext().getRequestDispatcher("/AmandmentsPresident.jsp").forward(request, response);	

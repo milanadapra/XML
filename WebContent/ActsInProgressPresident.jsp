@@ -49,17 +49,42 @@
 		<div class="items">
 			<c:forEach var="akt" items="${aktiUproceduri}">
 				<div class="item">
-					<div>
+				<div>
 					<br/>
 						&nbsp; <b>${akt.key}</b>
+						<form action="AddAmandman" method="post">
+					 			<input type="hidden" name="fileName" value="${akt.key}" />
+					 			
+								<input type="submit" value="Dodaj amandman" width="30">
+					</form>
 					</div>
 					<div class="openPerspective">
-						<form action="PdfGenerator" method="post">
-							<input type="hidden" name="fileName" value="${akt.key}">
-							<input type="hidden" name="fileRoot" value="${akt.value}">
-							<input type="image" alt="submit" src="css/images/pd.png" width="30">
-							<a href="data/XmlWithCss/bookstore.xml" style="position:relative; bottom:10px;"><img src="css/images/xm.png" width="30"></a>
-						</form>
+						<table>
+							 <tr>
+								<td>
+									<form action="PdfGenerator" method="post">
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/pd.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="XmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/xm.png" width="30">
+									</form>
+								</td>
+								<td>
+									<form action="HtmlGenerator" method="post" >
+									<input type="hidden" name="fileName" value="${akt.key}">
+									<input type="hidden" name="fileUri" value="${akt.value}">
+									&nbsp;<input type="image" alt="submit" src="css/images/ht.png" width="30">
+									</form>
+								</td>
+							</tr>
+							
+						</table>
 					</div>
 				</div>
 				<br/>
