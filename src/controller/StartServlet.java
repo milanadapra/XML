@@ -44,6 +44,7 @@ public class StartServlet extends HttpServlet {
 		users.add(new User("admin", "admin", "Predsednik"));
 		users.add(new User("mico", "micic", "Odbornik"));
 		getServletContext().setAttribute("users", users);
+		getServletContext().setAttribute("sjednica", false);
 	}
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub

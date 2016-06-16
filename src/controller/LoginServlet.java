@@ -72,6 +72,7 @@ public class LoginServlet extends HttpServlet {
 				context.setAttribute("aktiUproceduri", xmlCollection.getAktiUproceduri());
 				context.setAttribute("amandmani", xmlCollection.getAmandmani());
 				
+				
 				switch(user.getRole()){
 					case "Predsednik": {
 						response.sendRedirect("HomePagePresident.jsp");
