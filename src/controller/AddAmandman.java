@@ -38,6 +38,7 @@ public class AddAmandman extends HttpServlet {
 		User user = (User)request.getSession().getAttribute("currentUser");
 		String fileName = request.getParameter("fileName");
 		request.setAttribute("fileName", fileName);
+		//String fileUri = request.getParameter("fileUri");
 		
 		if(user.getRole().equals("Odbornik"))
         	getServletContext().getRequestDispatcher("/AmandmentsAlderman.jsp").forward(request, response);

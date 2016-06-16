@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Amandman xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="file:/C:/Users/Pepi5/Desktop/work/web%20programiranje/XmlProjekat/XML/data/xsl-fo/amandman.xsd" BrojClana="Clan 1" VrstaAmandmana="update" Akt="zop.xml">
+    xsi:noNamespaceSchemaLocation="file:/C:/Users/Pepi5/Desktop/work/web%20programiranje/XmlProjekat/XML/data/xsl-fo/amandman.xsd" BrojClana="/b:Akt/b:UvodniDeo/b:Glava[1]/b:Odredba[1]/b:Predmet[1]/b:Clan[1]" VrstaAmandmana="update" Akt="/legalmarihaune.xml">
     <Obrazlozenje>Obrazlozenje za izmjenu akta</Obrazlozenje>
     <Clan xmlns="http://www.ftn.uns.ac.rs/XML" Naziv="Clan 1 alfa">
         <Stav Naziv="Stav 1 alfa">

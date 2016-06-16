@@ -114,13 +114,6 @@
 						<table>
 							 <tr>
 								<td>
-									<form action="PdfGenerator" method="post">
-									<input type="hidden" name="fileName" value="${amandman.key}">
-									<input type="hidden" name="fileUri" value="${amandman.value}">
-									&nbsp;<input type="image" alt="submit" src="css/images/pd.png" width="30">
-									</form>
-								</td>
-								<td>
 									<form action="XmlGenerator" method="post" >
 									<input type="hidden" name="fileName" value="${amandman.key}">
 									<input type="hidden" name="fileUri" value="${amandman.value}">
@@ -136,7 +129,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="3">
+								<td colspan="2">
 								<form action="ResultServlet">
 									<input type="hidden" name="fileUri" value="${amandman.value}">
 									<input type="text" name="za" placeholder="Za" size="5"/>

@@ -20,11 +20,14 @@ import javax.xml.validation.Validator;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import xmlTransformations.XMLWriter;
 
 import com.marklogic.client.DatabaseClient;
+
+import net.sf.saxon.dom.DocumentBuilderFactoryImpl;
 
 /**
  * Servlet implementation class UploadAmandman
@@ -57,6 +60,7 @@ public class UploadAmandman extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String user = "";
+		String fileUri = request.getParameter("fileUri");
         if (!ServletFileUpload.isMultipartContent(request)) {
             PrintWriter writer = response.getWriter();
             writer.println("Request does not contain upload data");
@@ -99,6 +103,8 @@ public class UploadAmandman extends HttpServlet {
                     
                     File schemaFile = new File(getClass().getProtectionDomain().getCodeSource().getLocation().getPath().concat("/../../../xml/amandman.xsd"));
                     Source xmlFile = new StreamSource(storeFile);
+                   // fileUri
+                 
                     SchemaFactory schemaFactory = SchemaFactory
                         .newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
                     Schema schema = schemaFactory.newSchema(schemaFile);
