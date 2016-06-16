@@ -134,4 +134,24 @@
     <servlet-name>AddNewAmandman</servlet-name>
     <url-pattern>/AddNewAmandman</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SetSjednicaOn</display-name>
+    <servlet-name>SetSjednicaOn</servlet-name>
+    <servlet-class>controller.SetSjednicaOn</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetSjednicaOn</servlet-name>
+    <url-pattern>/SetSjednicaOn</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SetSjednicaOff</display-name>
+    <servlet-name>SetSjednicaOff</servlet-name>
+    <servlet-class>controller.SetSjednicaOff</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SetSjednicaOff</servlet-name>
+    <url-pattern>/SetSjednicaOff</url-pattern>
+  </servlet-mapping>
 </web-app>

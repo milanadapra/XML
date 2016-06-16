@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	
 <title>Grad Novi Sad</title>
+
 </head>
 <body style="background-image: url('css/images/noviSad.jpg');">
 <div class="container">
@@ -36,6 +37,19 @@
 	</div>
 	
 	<div class="content">
+		<div>
+			<form action="SetSjednicaOn" method="post" >
+			Započnite sjednicu, u tom periodu se neće moći predlagati novi akti i amandmani.<br/>
+				<input type="hidden" name="sjednica" value="${sjednica}">
+				<input type="submit" value="Započni sjednicu" width="30" <c:if test="${sjednica == true}"><c:out value="disabled='disabled'"/></c:if>>
+			</form>
+			<br/>
+			<form action="SetSjednicaOff" method="post" >
+			Završite sjednicu, opet će se moći predlagati novi akti i amandmani.<br/>
+				<input type="hidden" name="sjednica" value="${sjednica}">
+				<input type="submit" value="Završi sjednicu" width="30" <c:if test="${sjednica == false}"><c:out value="disabled='disabled'"/></c:if>>
+			</form>
+		</div>
 		<br/>
 		<div class="items" style="width: 90%;">
 			<div style="position: absolute; left:2%; width:54%;">

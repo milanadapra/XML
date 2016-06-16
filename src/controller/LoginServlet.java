@@ -67,6 +67,7 @@ public class LoginServlet extends HttpServlet {
 				ReloadContext rC = new ReloadContext();
 				rC.reload(getServletContext(), client);
 				
+				
 				switch(user.getRole()){
 					case "Predsednik": {
 						response.sendRedirect("HomePagePresident.jsp");

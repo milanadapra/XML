@@ -67,11 +67,9 @@ public class ResultServlet extends HttpServlet {
 		}
 		else {
 			ServerEvaluationCall call = client.newServerEval()
-					.xquery("xdmp:document-delete(\""+file+"\")");
-			call.eval();	
+					.xquery("xdmp:document-delete("+file+")");
+			call.eval();
 		}
-		ReloadContext rC = new ReloadContext();
-		rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
 		response.sendRedirect("ResultsPresident.jsp");
 	}
 

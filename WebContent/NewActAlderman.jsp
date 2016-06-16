@@ -51,13 +51,13 @@
 					<input type="hidden" name="notValid" value="${notValid}" size="30" />
 					<input type="hidden" name="reason" value="${reason}" size="30" />
 					<input type="hidden" name="user" value="${currentUser.role}" size="30" />
-					<input type="submit" value="Dodaj" width="30">
+					<input type="submit" value="Dodaj" width="30" <c:if test="${sjednica == true}"><c:out value="disabled='disabled'"/></c:if>>
 			</form>
 			
 		 <form action="AddNewAct" method="post" id="xmltext">
 		 			Naziv akta: <input type="text" name="filename" />
 		 			<input type="hidden" name="user" value="${currentUser.role}" size="30" />
-					<input type="submit" value="Dodaj akt" width="30">
+					<input type="submit" value="Dodaj akt" width="30" <c:if test="${sjednica == true}"><c:out value="disabled='disabled'"/></c:if>>
 			</form>
 			<br/>
 			<textarea form ="xmltext" placeholder="Unesi sadrzaj akta..." name="tekst" id="taid" rows= "35" cols="128" wrap="soft"></textarea>
