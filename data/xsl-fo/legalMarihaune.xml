@@ -2,7 +2,7 @@
 <b:Akt xmlns:b="http://www.ftn.uns.ac.rs/XML"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.ftn.uns.ac.rs/XML file:akt.xsd" Naziv="Zakon o legalizaciji marihuane" Odobrio="" Predlozio="Cedomir Jovanovic" 
-    DatumPredlaganja="2015-09-24">
+    DatumPredlaganja="2015-09-24" DatumUsvajanja="2012-02-02">
     <b:UvodniDeo>
         <b:Glava Naziv="Glava I">
             <b:Odredba Naziv="Odredba 1">

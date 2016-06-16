@@ -52,9 +52,8 @@
 		</div>
 		<br/>
 		<div class="items" style="width: 90%;">
-			<table width="950">
-				<tr>
-					<td>
+			<div style="position: absolute; left:2%; width:54%;">
+			<h3>Akti</h3>
 			<c:forEach var="akt" items="${aktiUproceduri}">
 				<div class="item" style="width: 100%;">
 					<div>
@@ -102,8 +101,9 @@
 				</div>
 				<br/>
 			</c:forEach>
-			</td>
-			<td style="padding-left:20px;">
+			</div>
+			<div style="position: absolute; left: 60%; width:54%;">
+			<h3>Amandmani</h3>
 			<c:forEach var="amandman" items="${amandmani}">
 				<div class="item"  style="width: 90%;">
 					<div>
@@ -150,9 +150,7 @@
 				</div>
 				<br/>
 			</c:forEach>
-			</td>
-			</tr>
-			</table>
+			</div>
 		</div>
 	</div>
 </div>

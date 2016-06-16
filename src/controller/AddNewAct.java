@@ -89,7 +89,9 @@ public class AddNewAct extends HttpServlet {
           
           try {
 			writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName + ".xml", tempXmlFile,"akti/uproceduri");
-		} catch (TransformerException | TransformerFactoryConfigurationError e) {
+			ReloadContext rC = new ReloadContext();
+			rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
+          } catch (TransformerException | TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

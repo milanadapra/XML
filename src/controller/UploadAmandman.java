@@ -109,6 +109,8 @@ public class UploadAmandman extends HttpServlet {
                       XMLWriter writer = new XMLWriter();
                       writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile, "amandmani/uproceduri");
                       System.out.println("Upload has been done successfully!");
+                      ReloadContext rC = new ReloadContext();
+          				rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
                       request.setAttribute("valid", fileName + " is valid");
                       request.setAttribute("notValid","");
                       request.setAttribute("reason", "");

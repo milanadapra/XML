@@ -6,71 +6,71 @@ import java.util.HashMap;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 import com.marklogic.client.DatabaseClient;
-import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.eval.EvalResult;
 import com.marklogic.client.eval.ServerEvaluationCall;
-import com.marklogic.client.io.SearchHandle;
-import com.marklogic.client.query.MatchDocumentSummary;
-import com.marklogic.client.query.MatchLocation;
-import com.marklogic.client.query.MatchSnippet;
-import com.marklogic.client.query.QueryManager;
-import com.marklogic.client.query.StringQueryDefinition;
 
-import xquery.Util;
-import xquery.Util.ConnectionProperties;
 
 public class XMLCollectionReader {
 	private HashMap<String, String> aktiUproceduri = new HashMap<String, String>();
 	private HashMap<String, String> usvojeniAkti = new HashMap<String, String>();
-	private HashMap<String, String> amandmani = new HashMap<String, String>();
+	private HashMap<String, String> amandmaniUproceduri = new HashMap<String, String>();
+	private HashMap<String, String> usvojeniAmandmani = new HashMap<String, String>();
 	private HashMap<String, String> odbijeniAkti = new HashMap<String, String>();
 	
 	public void readDocuments(DatabaseClient client) throws FileNotFoundException {
 		
 		XMLReader reader = new XMLReader();
 		
-		ServerEvaluationCall call = client.newServerEval()
+		ServerEvaluationCall urisCall = client.newServerEval()
 			        .xquery("cts:uris()");//uris
-		for ( EvalResult result : call.eval() ) 
+		for ( EvalResult result : urisCall.eval() ) 
 		{
 	        String uri = result.getString();
-	        
 	        Document doc = (reader.run(client, uri));
-	        if(doc.getFirstChild().getNodeName().equals("b:Akt")) {
-		        if(!((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals("") &&
-		        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() !=null	){
-		        	usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-		        }
-		        else if(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() != null &&
-		        		!((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals("")){
-		        	odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-		        }
-		        else if((((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString() == null ||
-		        		((Element)doc.getFirstChild()).getAttribute("DatumUsvajanja").toString().equals(""))&&
-		        		(((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString() == null || 
-		        				((Element)doc.getFirstChild()).getAttribute("DatumOdbijanja").toString().equals(""))){
-		        	aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri);
-		        }
-	        } else {
-	        	amandmani.put("Amandman "+ amandmani.size() + " za akt: "+ ((Element)doc.getFirstChild()).getAttribute("Akt").toString(), uri);
-	        }
+	        ServerEvaluationCall collectionCall = client.newServerEval()
+			        .xquery("xdmp:document-get-collections(\""+uri+"\")");
+	        for ( EvalResult collection : collectionCall.eval() ) 
+			{
+	        	String colect = collection.getString();
+	        	switch(colect){
+	        		case "akti/usvojeni": {usvojeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri); break;}
+	        		case "akti/odbijeni": {odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri); break;}
+	        		case "akti/uproceduri": {aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri); break;}
+	        		case "amandmani/usvojeni": break;
+	        		case "amandmani/uproceduri": {amandmaniUproceduri.put(amandmaniUproceduri.size() + ") Amandman za akt: "+ ((Element)doc.getFirstChild()).getAttribute("Akt").toString(), uri); break;}
+	        		default: break;
+	        	}
+			}
 	    }
 	}
+	
 	
 	public HashMap<String, String> getAktiUproceduri() {
 		return aktiUproceduri;
 	}
 
+
 	public HashMap<String, String> getUsvojeniAkti() {
 		return usvojeniAkti;
 	}
 
-	public HashMap<String, String> getAmandmani() {
-		return amandmani;
+
+	public HashMap<String, String> getAmandmaniUproceduri() {
+		return amandmaniUproceduri;
 	}
+
+
+	public HashMap<String, String> getUsvojeniAmandmani() {
+		return usvojeniAmandmani;
+	}
+
+
+	public HashMap<String, String> getOdbijeniAkti() {
+		return odbijeniAkti;
+	}
+
 
 	public void main(String[] args) throws IOException {
 		//run(Util.loadProperties());
