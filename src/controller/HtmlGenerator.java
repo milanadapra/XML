@@ -73,7 +73,7 @@ public class HtmlGenerator extends HttpServlet {
 			ProcessingInstruction pi = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/aktStyle.css\"");  
 			ProcessingInstruction piAmandman = xmlDocument.createProcessingInstruction("xml-stylesheet", "type=\"text/css\" href=\"css/amandmanStyle.css\"");  
 			
-			if(xmlDocument.getFirstChild().getNodeName().equals("Akt"))
+			if(!xmlDocument.getFirstChild().getNodeName().equals("Amandman"))
 				xmlDocument.insertBefore(pi, xmlDocument.getFirstChild());
 			else
 				xmlDocument.insertBefore(piAmandman, xmlDocument.getFirstChild());

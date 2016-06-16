@@ -111,6 +111,8 @@ public class UploadAct extends HttpServlet {
                       System.out.println(xmlFile.getSystemId() + " is valid");
                       XMLWriter writer = new XMLWriter();
                       writer.run((DatabaseClient)request.getSession().getAttribute("client"), "/"+fileName, xmlFile, "akti/uproceduri");
+                      ReloadContext rC = new ReloadContext();
+        				rC.reload(getServletContext(), (DatabaseClient)request.getSession().getAttribute("client"));
                       request.setAttribute("valid", fileName + " is valid");
                       request.setAttribute("notValid","");
                       request.setAttribute("reason", "");

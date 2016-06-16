@@ -39,7 +39,7 @@ public class XMLCollectionReader {
 	        		case "akti/odbijeni": {odbijeniAkti.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri); break;}
 	        		case "akti/uproceduri": {aktiUproceduri.put(((Element)doc.getFirstChild()).getAttribute("Naziv").toString(), uri); break;}
 	        		case "amandmani/usvojeni": break;
-	        		case "amandmani/uproceduri": {amandmaniUproceduri.put(amandmaniUproceduri.size() + ") Amandman za akt: "+ ((Element)doc.getFirstChild()).getAttribute("Akt").toString(), uri); break;}
+	        		case "amandmani/uproceduri": {amandmaniUproceduri.put((amandmaniUproceduri.size()+1) + ") Amandman za akt: "+ ((Element)doc.getFirstChild()).getAttribute("Akt").toString(), uri); break;}
 	        		default: break;
 	        	}
 			}
