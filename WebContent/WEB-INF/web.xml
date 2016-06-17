@@ -164,4 +164,14 @@
     <servlet-name>RemoveAct</servlet-name>
     <url-pattern>/RemoveAct</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveAmandman</display-name>
+    <servlet-name>RemoveAmandman</servlet-name>
+    <servlet-class>controller.RemoveAmandman</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveAmandman</servlet-name>
+    <url-pattern>/RemoveAmandman</url-pattern>
+  </servlet-mapping>
 </web-app>

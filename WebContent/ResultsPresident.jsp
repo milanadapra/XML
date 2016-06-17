@@ -107,7 +107,12 @@
 				<div class="item"  style="width: 90%;">
 					<div>
 					<br/>
-						&nbsp; <b>${amandman.key}</b>
+						&nbsp; <b>${amandman.key}</b>;<br/>
+						<form action="RemoveAmandman" method="post">
+					 			<input type="hidden" name="fileName" value="${amandman.key}" />
+					 			<input type="hidden" name="fileUri" value="${amandman.value}" />
+								<input type="submit" value="Povuci amandman" width="30">
+						</form>
 					</div>
 					<div class="openPerspective" style="left: 60%;">
 						<table>
