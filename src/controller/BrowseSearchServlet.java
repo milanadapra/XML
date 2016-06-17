@@ -58,6 +58,7 @@ public class BrowseSearchServlet extends HttpServlet {
 			
 		String criteria = sadrzaj;
 		queryDefinition.setCriteria(criteria);
+		//queryDefinition.setCriteria("Naziv: \"Dusanov zakonik\"");
 		
 		// Search within a specific collection
 		queryDefinition.setCollections(COLLECTION);
