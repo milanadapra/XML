@@ -35,7 +35,6 @@
                 </ul>
 		</nav>
 	</div>
-	
 	<div class="content">
 		<div>
 			<form action="SetSjednicaOn" method="post" >
@@ -91,7 +90,7 @@
 									<input type="hidden" name="fileUri" value="${akt.value}">
 									<input type="text" name="za" placeholder="Za" size="5"/>
 									<input type="text" name="protiv" placeholder="Protiv" size="5"/>
-									<input type="image" alt="submit" src="css/images/check.png" width="20">
+									<input type="image" alt="submit" src="css/images/check.png" width="20" <c:if test="${sjednica == false}"><c:out value="disabled='disabled'"/></c:if>>
 							</form>
 							</td>
 							</tr>
@@ -134,7 +133,7 @@
 									<input type="hidden" name="fileUri" value="${amandman.value}">
 									<input type="text" name="za" placeholder="Za" size="5"/>
 									<input type="text" name="protiv" placeholder="Protiv" size="5"/>
-									<input type="image" alt="submit" src="css/images/check.png" width="20">
+									<input type="image" alt="submit" src="css/images/check.png" width="20" <c:if test="${sjednica == false}"><c:out value="disabled='disabled'"/></c:if>>
 							</form>
 							</td>
 							</tr>

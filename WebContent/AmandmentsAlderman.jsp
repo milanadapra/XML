@@ -46,7 +46,7 @@
 	
 	<div class="content">
 		
-		Dodavanje gotovog amandmana u xml formatu koji je vezan za akt <h3>${fileName}: </h3>
+		Dodavanje gotovog amandmana u xml formatu koji je vezan za akt <h3>${fileName} </h3>
 		<form action="UploadAmandman" method="post" enctype="multipart/form-data" >
 					<input type="file" name="uploadFile" size="30" />
 					<input type="hidden" name="valid" value="${valid}" size="30" />

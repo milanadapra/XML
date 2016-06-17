@@ -154,4 +154,14 @@
     <servlet-name>SetSjednicaOff</servlet-name>
     <url-pattern>/SetSjednicaOff</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>RemoveAct</display-name>
+    <servlet-name>RemoveAct</servlet-name>
+    <servlet-class>controller.RemoveAct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoveAct</servlet-name>
+    <url-pattern>/RemoveAct</url-pattern>
+  </servlet-mapping>
 </web-app>

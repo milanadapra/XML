@@ -36,15 +36,6 @@
 	</div>
 	
 	<div class="content">
-		<div class="searchBox">
-		 <form action="" class="search-form">
-	       <div class="form-group has-feedback">
-	       		<label for="search" class="sr-only">Search</label>
-	       		<input type="text" class="form-control" name="search" id="search" placeholder="search">
-	         		<span class="glyphicon glyphicon-search form-control-feedback"></span>
-	       	</div>
-	     </form>
-		</div>
 		<br/>
 		<div class="items">
 			<c:forEach var="akt" items="${aktiUproceduri}">
@@ -56,7 +47,12 @@
 					 			<input type="hidden" name="fileName" value="${akt.key}" />
 					 			<input type="hidden" name="fileUri" value="${akt.value}" />
 								<input type="submit" value="Dodaj amandman" width="30">
-					</form>
+						</form><br/>
+						<form action="RemoveAct" method="post">
+					 			<input type="hidden" name="fileName" value="${akt.key}" />
+					 			<input type="hidden" name="fileUri" value="${akt.value}" />
+								<input type="submit" value="Povuci akt" width="30">
+						</form>
 					</div>
 					<div class="openPerspective">
 						<table>

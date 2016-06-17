@@ -51,9 +51,13 @@
 						&nbsp; <b>${akt.key}</b>
 						<form action="AddAmandman" method="post">
 					 			<input type="hidden" name="fileName" value="${akt.key}" />
-					 			
 								<input type="submit" value="Dodaj amandman" width="30">
-					</form>
+						</form><br/>
+						<form action="RemoveAct" method="post">
+					 			<input type="hidden" name="fileName" value="${akt.key}" />
+					 			<input type="hidden" name="fileUri" value="${akt.value}" />
+								<input type="submit" value="Povuci akt" width="30">
+						</form>
 					</div>
 					<div class="openPerspective">
 						<table>
