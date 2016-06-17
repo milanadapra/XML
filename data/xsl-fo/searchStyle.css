@@ -1,0 +1,44 @@
+Rezultat{
+	margin: auto;
+    padding: 50px;
+	background: url('http://orig00.deviantart.net/1ac2/f/2014/117/e/0/novi_sad_wallpaper_by_balkanicon-d7g5k1i.jpg');
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+	background-size: 100% auto; 
+}
+Lokacija{
+	display: block;
+	padding: 50px;
+	background-color: #EDEDED;
+	padding-right: 20px;
+    border-top-left-radius:15px;
+	border-top-right-radius:15px;
+	border-bottom-right-radius:15px;
+	border-bottom-left-radius:15px; 
+	opacity: 0.9;
+	filter: alpha(opacity=80);
+}
+Sadrzaj:before{
+	display: block;
+	content: Sadrzaj;
+	font-size: 17px;
+	text-align: left;
+	font-weight: bold; 
+}
+Sadrzaj{
+	display: block;
+	font-size: 16px;
+	font-weight: bold; 
+}
+Putanja:before{
+	display: block;
+	content: Putanja;
+	font-size: 17px;
+	text-align: left;
+	font-weight: bold; 
+}
+Putanja{
+	display: block;
+	font-size: 16px;
+	text-decoration: underline; 
+}

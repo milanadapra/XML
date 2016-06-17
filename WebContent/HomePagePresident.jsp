@@ -49,14 +49,6 @@ $(document).ready(function() {
 		 <form class="pretraga" action="BrowseSearchServlet" method="post">
 	      <ul class="nav">
 		 		 	<li><a><input type="text" name="sadrzaj" placeholder="Sadrzaj"/></a></li>
-                    <li><a><input type="text" name="imeAkta" placeholder="Naziv akta"/></a></li>
-                    <li><a><input type="text" name="predlozio" placeholder="Ime predlagaca"/></a></li>
-                    <li><a>Datum predlaganja:<input type="date" name="datumPredlaganjaOd"/>
-   						<input type="date" name="datumPredlaganjaDo"/></a></li>
-   					 <li><a>Datum odbijanja:<input type="date" name="datumOdbijanjaOd"/>
-   						<input type="date" name="datumOdbijanjaDo"/></a></li>
-   					 <li><a>Datum usvajanja:<input type="date" name="datumUsvajanjaOd"/>
-   						<input type="date" name="datumUsvajanjaDo"/></a></li>
                     <li class="nav-divider"></li>
                    <li><a>
                    		<input type="submit" value="Traži" class="btn btn-primary"/></a></li>

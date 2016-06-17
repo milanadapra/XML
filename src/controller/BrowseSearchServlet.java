@@ -49,17 +49,6 @@ public class BrowseSearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String sadrzaj = request.getParameter("sadrzaj");
-		String naziv = request.getParameter("imeAkta");
-		String predlozio = request.getParameter("predlozio");
-		Date datumPredOd;
-		Date datumPredDo;
-		Date datumOdbOd;
-		Date datumOdbDo;
-		Date datumUsvOd;
-		Date datumUsvDo;
-		DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-		
-		String datumPredlaganjaOd= request.getParameter("datumPredlaganjaOd");
 		
 		DatabaseClient client = (DatabaseClient)request.getSession().getAttribute("client");
 		QueryManager queryManager = client.newQueryManager();
@@ -67,48 +56,6 @@ public class BrowseSearchServlet extends HttpServlet {
 		// Query definition is used to specify Google-style query string
 		StringQueryDefinition queryDefinition = queryManager.newStringDefinition();
 			
-		try {
-			datumPredOd = format.parse(datumPredlaganjaOd);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String datumPredlaganjaDo= request.getParameter("datumPredlaganjaDo");
-		try {
-			datumPredDo = format.parse(datumPredlaganjaDo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String datumOdbijanjaOd= request.getParameter("datumOdbijanjaOd");
-		try {
-			datumOdbOd = format.parse(datumOdbijanjaOd);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String datumOdbijanjaDo= request.getParameter("datumOdbijanjaDo");
-		try {
-			datumOdbDo = format.parse(datumOdbijanjaDo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String datumUsvajanjaOd= request.getParameter("datumUsvajanjaOd");
-		try {
-			datumUsvOd = format.parse(datumUsvajanjaOd);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String datumUsvajanjaDo= request.getParameter("datumUsvajanjaDo");
-		try {
-			datumUsvDo = format.parse(datumUsvajanjaDo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		String criteria = sadrzaj;
 		queryDefinition.setCriteria(criteria);
 		
@@ -124,18 +71,20 @@ public class BrowseSearchServlet extends HttpServlet {
 		MatchLocation locations[];
 		String text;
 		
+		response.getWriter().print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+		response.getWriter().print("<?xml-stylesheet type=\"text/css\" href=\"css/searchStyle.css\"?>");
 		for (int i = 0; i < matches.length; i++) {
 			result = matches[i];
-			
-			response.getWriter().print((i+1) + ". RESULT DETAILS: ");
-			response.getWriter().print("Result URI: " + result.getUri());
+			response.getWriter().print("<Rezultat>");
+			response.getWriter().print((i+1) + ". Detalji pretrage: ");
+			response.getWriter().print("\n - URI: " + result.getUri());
 			
 			locations = result.getMatchLocations();
-			response.getWriter().print("Document locations matched: " + locations.length + "\n");
+			response.getWriter().print("\n     ( Pronadjenih dokumenata: " + locations.length + ") \n");
 
 			for (MatchLocation location : locations) {
-				
-				response.getWriter().print(" - ");
+				response.getWriter().print("<Lokacija>");
+				response.getWriter().print("<Sadrzaj>");
 				for (MatchSnippet snippet : location.getSnippets()) {
 					text = snippet.getText().trim();
 					if (!text.equals("")) {
@@ -143,11 +92,14 @@ public class BrowseSearchServlet extends HttpServlet {
 						response.getWriter().print(" ");
 					}
 				}
-				response.getWriter().print("\n - Match location XPath: " + location.getPath());
-				response.getWriter().print("");
+				response.getWriter().print("</Sadrzaj>");
+				response.getWriter().print("<Putanja>");
+				response.getWriter().print("\n " + location.getPath());
+				response.getWriter().print("</Putanja>");
+				response.getWriter().print("</Lokacija>");
 			}
 			
-			response.getWriter().print("");
+			response.getWriter().print("</Rezultat>");
 		}
 		
 	}
